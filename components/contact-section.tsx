@@ -1,9 +1,16 @@
 "use client"
 import { MapPin, Mail, Phone } from "lucide-react"
-import { useRef } from "react"
+// Remove useRef import since we're only using useInView
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 export default function ContactSection() {
-  const ref = useRef(null)
+  // Remove useRef import since we're only using useInView
+
+  const { ref: contactRef, inView: isContactInView } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  })
 
   // Contact info items
   const contactItems = [
@@ -30,9 +37,15 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      ref={ref}
+      ref={contactRef}
       className="py-20 bg-gradient-to-b from-black to-purple-950/30 relative overflow-hidden"
     >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isContactInView ? 0.1 : 0 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0 bg-[url('/abstract-smoke.png')] bg-repeat"
+      />
       {/* Static background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] bg-repeat opacity-5" />

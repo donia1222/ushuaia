@@ -127,6 +127,14 @@ export default function EventsSection() {
       ref={ref}
       className="py-20 bg-gradient-to-b from-black via-purple-950/20 to-black relative overflow-hidden"
     >
+      {/* Animated smoke background */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isEventsInView ? 0.1 : 0 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0 bg-[url('/abstract-smoke.png')] bg-repeat z-0"
+      />
+
       {/* Animated background */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -158,6 +166,20 @@ export default function EventsSection() {
         >
           {/* Main animated title */}
           <div className="mb-8">
+            {/* Add USHUAIA KITCHEN BY text above */}
+            <motion.div
+              className="text-2xl md:text-3xl font-light mb-2 text-white/80 tracking-widest"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: isEventsInView ? 1 : 0, y: isEventsInView ? 0 : 30 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              style={{
+                fontFamily: "'Bebas Neue', cursive",
+                fontWeight: "300",
+              }}
+            >
+              USHUAIA KITCHEN BY
+            </motion.div>
+
             <motion.div
               className="text-6xl md:text-8xl font-light mb-4 relative"
               initial={{ scale: 0.8 }}
@@ -167,7 +189,7 @@ export default function EventsSection() {
               {titleLetters.map((letter, index) => (
                 <motion.span
                   key={index}
-                  className="inline-block bg-gradient-to-r from-purple-400 via-pink-500 to-purple-500 bg-clip-text text-transparent"
+                  className="inline-block text-white"
                   initial={{ opacity: 0, y: 50, rotateX: -90 }}
                   animate={{
                     opacity: isEventsInView ? 1 : 0,
@@ -176,16 +198,16 @@ export default function EventsSection() {
                   }}
                   transition={{
                     duration: 0.8,
-                    delay: index * 0.1,
+                    delay: index * 0.1 + 0.3, // Add slight delay after the "USHUAIA KITCHEN BY" text
                     ease: "easeOut",
                   }}
                   whileHover={{
                     scale: 1.2,
-                    textShadow: "0 0 20px rgba(168, 85, 247, 0.8)",
+                    textShadow: "0 0 20px rgba(255, 255, 255, 0.8)",
                     transition: { duration: 0.2 },
                   }}
                   style={{
-                    textShadow: "0 0 30px rgba(168, 85, 247, 0.5)",
+                    textShadow: "0 0 30px rgba(255, 255, 255, 0.5)",
                     fontFamily: "'Bebas Neue', cursive",
                     fontWeight: "300",
                   }}
@@ -230,7 +252,7 @@ export default function EventsSection() {
 
             {/* Subtitle with typewriter effect */}
             <motion.div
-              className="text-xl md:text-2xl text-purple-300 font-light tracking-wider"
+              className="text-xl md:text-2xl text-red-400 font-light tracking-wider"
               initial={{ opacity: 0 }}
               animate={{ opacity: isEventsInView ? 1 : 0 }}
               transition={{ delay: 1.5, duration: 0.8 }}
@@ -240,14 +262,14 @@ export default function EventsSection() {
                 animate={{ width: isEventsInView ? "100%" : 0 }}
                 transition={{ delay: 2, duration: 2, ease: "easeInOut" }}
                 className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-purple-400"
-                style={{ borderRight: "2px solid #c084fc" }}
+                style={{ borderRight: "2px solid #f87171" }}
               >
                 Authentische Mexikanische Geschmäcker
               </motion.span>
             </motion.div>
           </div>
 
-          {/* Feature items with Mexican theme */}
+          {/* Feature items with Mexican theme - Changed to red overlays */}
           <div className="flex flex-wrap justify-center gap-6 mb-8">
             {[
               { icon: "🌮", text: "Hausgemachte Tacos" },
@@ -264,10 +286,10 @@ export default function EventsSection() {
                   y: isEventsInView ? 0 : 20,
                 }}
                 transition={{ delay: 0.5 + index * 0.2, duration: 0.6 }}
-                className="flex items-center bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-3"
+                className="flex items-center bg-gradient-to-r from-red-900/30 to-red-800/30 backdrop-blur-sm border border-red-500/30 rounded-full px-6 py-3"
                 whileHover={{
                   scale: 1.1,
-                  boxShadow: "0 0 20px rgba(168, 85, 247, 0.4)",
+                  boxShadow: "0 0 20px rgba(239, 68, 68, 0.4)",
                 }}
               >
                 <motion.span
@@ -283,7 +305,7 @@ export default function EventsSection() {
                 >
                   {item.icon}
                 </motion.span>
-                <span className="text-purple-200 font-medium">{item.text}</span>
+                <span className="text-red-200 font-medium">{item.text}</span>
               </motion.div>
             ))}
           </div>
@@ -309,12 +331,12 @@ export default function EventsSection() {
               className="w-full h-auto rounded-2xl transition-transform duration-700 group-hover:scale-105"
             />
             <motion.div
-              className="absolute inset-0 bg-gradient-to-t from-purple-900/95 via-purple-900/80 to-transparent flex flex-col justify-end p-8"
+              className="absolute inset-0 bg-gradient-to-t from-red-900/95 via-red-900/80 to-transparent flex flex-col justify-end p-8"
               initial={{ opacity: 0.7 }}
               whileHover={{ opacity: 1 }}
             >
               <motion.p
-                className="text-purple-100 leading-relaxed text-lg"
+                className="text-red-100 leading-relaxed text-lg"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: isEventsInView ? 0 : 20, opacity: isEventsInView ? 1 : 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
@@ -344,12 +366,12 @@ export default function EventsSection() {
               className="w-full h-auto rounded-2xl transition-transform duration-700 group-hover:scale-105"
             />
             <motion.div
-              className="absolute inset-0 bg-gradient-to-t from-pink-900/95 via-pink-900/80 to-transparent flex flex-col justify-end p-8"
+              className="absolute inset-0 bg-gradient-to-t from-red-800/95 via-red-800/80 to-transparent flex flex-col justify-end p-8"
               initial={{ opacity: 0.7 }}
               whileHover={{ opacity: 1 }}
             >
               <motion.p
-                className="text-pink-100 leading-relaxed text-lg"
+                className="text-red-100 leading-relaxed text-lg"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: isEventsInView ? 0 : 20, opacity: isEventsInView ? 1 : 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
@@ -372,10 +394,10 @@ export default function EventsSection() {
             href="https://cantinatexmex.ch"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white px-10 py-4 rounded-full font-bold text-lg inline-flex items-center group shadow-lg shadow-purple-500/30 cursor-pointer"
+            className=" text-white px-10 py-4 rounded-full font-bold text-lg inline-flex items-center group shadow-lg shadow-red-500/30 cursor-pointer"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 0 30px rgba(168, 85, 247, 0.6)",
+              boxShadow: "0 0 30px rgba(239, 68, 68, 0.6)",
               textShadow: "0 0 10px rgba(255, 255, 255, 0.8)",
             }}
             whileTap={{ scale: 0.95 }}

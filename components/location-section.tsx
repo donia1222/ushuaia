@@ -43,6 +43,14 @@ export default function LocationSection() {
 
   return (
     <section id="location" ref={ref} className="py-20 bg-black relative overflow-hidden">
+      {/* Animated smoke background */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLocationInView ? 0.1 : 0 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0 bg-[url('/abstract-smoke.png')] bg-repeat z-0"
+      />
+
       {/* Animated background */}
       <motion.div
         className="absolute inset-0 z-0 opacity-20"

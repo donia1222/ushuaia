@@ -2,6 +2,8 @@
 import { useRef, useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Play, Pause } from "@/components/ui-icons"
 import Image from "next/image"
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 export default function GallerySection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -123,11 +125,26 @@ export default function GallerySection() {
     setIsAutoPlaying(!isAutoPlaying)
   }
 
+  const { ref: galleryRef, inView: isGalleryInView } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  })
+
   return (
-    <section id="gallery" className="py-20 bg-gradient-to-b from-purple-950/30 to-black relative overflow-hidden">
+    <section
+      id="gallery"
+      ref={galleryRef}
+      className="py-20 bg-gradient-to-b from-purple-950/30 to-black relative overflow-hidden"
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isGalleryInView ? 0.1 : 0 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0 bg-[url('/abstract-smoke.png')] bg-repeat"
+      />
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] bg-repeat opacity-5" />
+        <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] bg-repeat " />
 
         {/* Floating gradient orbs */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
@@ -172,13 +189,7 @@ export default function GallerySection() {
 
         {/* Gallery Controls */}
         <div className="flex justify-center items-center gap-4 mb-8">
-          <button
-            onClick={() => scroll("left")}
-            className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all hover:scale-110"
-            disabled={isAutoPlaying}
-          >
-            <ChevronLeft className="h-6 w-6 text-white" />
-          </button>
+
 
           <div className="flex items-center gap-2">
             <button
@@ -198,13 +209,7 @@ export default function GallerySection() {
             <span className="text-white/60 text-sm">{isAutoPlaying ? "Auto Playing..." : "Auto Play"}</span>
           </div>
 
-          <button
-            onClick={() => scroll("right")}
-            className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all hover:scale-110"
-            disabled={isAutoPlaying}
-          >
-            <ChevronRight className="h-6 w-6 text-white" />
-          </button>
+ 
         </div>
 
         {/* Horizontal Scrolling Gallery */}

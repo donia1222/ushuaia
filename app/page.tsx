@@ -168,7 +168,11 @@ export default function Page() {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            <img src="/logo.png" alt="USHUAIA" className="h-20 w-auto rounded-lg shadow-lg shadow-purple-500/20" />
+            <img
+              src="/logo.png"
+              alt="USHUAIA"
+              className="h-12 sm:h-16 md:h-20 w-auto rounded-lg shadow-lg shadow-purple-500/20"
+            />
             <motion.div
               className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
               animate={{ width: hasScrolled ? "100%" : "0%" }}
@@ -231,7 +235,11 @@ export default function Page() {
                 transition={{ duration: 0.5 }}
                 className="relative"
               >
-                <img src="/logo.png" alt="USHUAIA" className="h-24 w-auto rounded-lg shadow-lg shadow-purple-500/30" />
+                <img
+                  src="/logo.png"
+                  alt="USHUAIA"
+                  className="h-16 sm:h-20 w-auto rounded-lg shadow-lg shadow-purple-500/30"
+                />
                 <motion.div
                   className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
                   animate={{ width: hasScrolled ? "100%" : "0%" }}
@@ -350,11 +358,21 @@ export default function Page() {
             <div>
               <h3 className="text-lg font-medium mb-4">Links</h3>
               <ul className="space-y-2 text-white/60">
-                {["Home", "Über Uns", "Galerie", "Cantina Tex-Mex", "Bewertungen", "Kontakt"].map((item, index) => (
+                {[
+                  { label: "Home", id: "home" },
+                  { label: "Über Uns", id: "about" },
+                  { label: "Galerie", id: "gallery" },
+                  { label: "Cantina Tex-Mex", id: "events" },
+                  { label: "Bewertungen", id: "testimonials" },
+                  { label: "Kontakt", id: "contact" },
+                ].map((item, index) => (
                   <li key={index}>
-                    <a href={`#${item.toLowerCase().replace(" ", "-")}`} className="hover:text-white transition-colors">
-                      {item}
-                    </a>
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className="hover:text-white transition-colors text-left"
+                    >
+                      {item.label}
+                    </button>
                   </li>
                 ))}
               </ul>
