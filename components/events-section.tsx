@@ -263,7 +263,7 @@ export default function EventsSection() {
                   scale: isEventsInView ? 1 : 0.8,
                   y: isEventsInView ? 0 : 20,
                 }}
-                transition={{ delay: 2.5 + index * 0.2, duration: 0.6 }}
+                transition={{ delay: 0.5 + index * 0.2, duration: 0.6 }}
                 className="flex items-center bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-3"
                 whileHover={{
                   scale: 1.1,
@@ -309,7 +309,7 @@ export default function EventsSection() {
               className="w-full h-auto rounded-2xl transition-transform duration-700 group-hover:scale-105"
             />
             <motion.div
-              className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/50 to-transparent flex flex-col justify-end p-8"
+              className="absolute inset-0 bg-gradient-to-t from-purple-900/95 via-purple-900/80 to-transparent flex flex-col justify-end p-8"
               initial={{ opacity: 0.7 }}
               whileHover={{ opacity: 1 }}
             >
@@ -337,14 +337,14 @@ export default function EventsSection() {
             className="relative rounded-2xl overflow-hidden group"
           >
             <Image
-              src="/IMG_2750.jpeg"
+              src="/cantinacopia.jpeg"
               alt="Mexikanisches Essen und Getränke"
               width={800}
               height={600}
               className="w-full h-auto rounded-2xl transition-transform duration-700 group-hover:scale-105"
             />
             <motion.div
-              className="absolute inset-0 bg-gradient-to-t from-pink-900/90 via-pink-900/50 to-transparent flex flex-col justify-end p-8"
+              className="absolute inset-0 bg-gradient-to-t from-pink-900/95 via-pink-900/80 to-transparent flex flex-col justify-end p-8"
               initial={{ opacity: 0.7 }}
               whileHover={{ opacity: 1 }}
             >
@@ -369,7 +369,7 @@ export default function EventsSection() {
           className="mt-12 text-center"
         >
           <motion.a
-            href="https://cantinatexmx.ch"
+            href="https://cantinatexmex.ch"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white px-10 py-4 rounded-full font-bold text-lg inline-flex items-center group shadow-lg shadow-purple-500/30 cursor-pointer"
