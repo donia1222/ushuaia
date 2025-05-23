@@ -17,6 +17,7 @@ import {
   Home,
   Camera,
   UtensilsCrossed,
+  Star,
 } from "@/components/ui-icons"
 import { AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -28,9 +29,7 @@ import EventsSection from "@/components/events-section"
 import ContactSection from "@/components/contact-section"
 import ParallaxTextSection from "@/components/parallax-text-section"
 import GallerySection from "@/components/gallery-section"
-import Testimonials from "@/components/testimonials-section"
-
-
+import TestimonialsSection from "@/components/testimonials-section"
 
 export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -44,6 +43,7 @@ export default function Page() {
   const galleryRef = useRef(null)
   const locationRef = useRef(null)
   const eventsRef = useRef(null)
+  const testimonialsRef = useRef(null)
   const contactRef = useRef(null)
 
   // Smooth scroll progress for overall page
@@ -57,6 +57,7 @@ export default function Page() {
     { id: "gallery", label: "Gallery", icon: <Camera className="h-4 w-4" /> },
     { id: "location", label: "Location", icon: <MapPin className="h-4 w-4" /> },
     { id: "events", label: "Cantina Tex-Mex", icon: <UtensilsCrossed className="h-4 w-4" /> },
+    { id: "testimonials", label: "Bewertungen", icon: <Star className="h-4 w-4" /> },
     { id: "contact", label: "Contact", icon: <MessageCircle className="h-4 w-4" /> },
   ]
 
@@ -89,7 +90,7 @@ export default function Page() {
   // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "gallery", "location", "events", "contact"]
+      const sections = ["home", "about", "gallery", "location", "events", "testimonials", "contact"]
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -165,11 +166,11 @@ export default function Page() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-bold"
+            className="relative"
           >
-            <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">USHUAIA</span>
+            <img src="/logo.png" alt="USHUAIA" className="h-20 w-auto rounded-lg shadow-lg shadow-purple-500/20" />
             <motion.div
-              className="h-1 w-0 bg-gradient-to-r from-purple-500 to-pink-500 mt-0.5 rounded-full"
+              className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
               animate={{ width: hasScrolled ? "100%" : "0%" }}
               transition={{ duration: 0.3 }}
             />
@@ -224,23 +225,19 @@ export default function Page() {
             className="fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex flex-col"
           >
             <div className="flex justify-between items-center p-6 border-b border-white/10">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="relative"
-            >
-              <img
-                src="/logo.svg"
-                alt="USHUAIA"
-                className="h-10 w-auto"
-              />
               <motion.div
-                className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                animate={{ width: hasScrolled ? "100%" : "0%" }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.div>
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="relative"
+              >
+                <img src="/logo.png" alt="USHUAIA" className="h-24 w-auto rounded-lg shadow-lg shadow-purple-500/30" />
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                  animate={{ width: hasScrolled ? "100%" : "0%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
               <motion.button
                 onClick={() => setMobileMenuOpen(false)}
                 whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
@@ -308,9 +305,9 @@ export default function Page() {
       <AboutSection />
       <ParallaxTextSection />
       <GallerySection />
-            <Testimonials/>
       <LocationSection />
       <EventsSection />
+      <TestimonialsSection />
       <ContactSection />
       {/* Footer */}
       <footer className="py-12 bg-black border-t border-white/10">
@@ -321,9 +318,9 @@ export default function Page() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"
+                className="relative"
               >
-                USHUAIA
+                <img src="/logo.png" alt="USHUAIA" className="h-20 w-auto rounded-lg shadow-lg shadow-purple-500/20" />
               </motion.div>
               <p className="text-white/60 text-sm">Premium Cocktail, Hookah & Terrace in Buchs seit 2016.</p>
             </div>
@@ -353,7 +350,7 @@ export default function Page() {
             <div>
               <h3 className="text-lg font-medium mb-4">Links</h3>
               <ul className="space-y-2 text-white/60">
-                {["Home", "Über Uns", "Galerie", "Cantina Tex-Mex", "Kontakt"].map((item, index) => (
+                {["Home", "Über Uns", "Galerie", "Cantina Tex-Mex", "Bewertungen", "Kontakt"].map((item, index) => (
                   <li key={index}>
                     <a href={`#${item.toLowerCase().replace(" ", "-")}`} className="hover:text-white transition-colors">
                       {item}
