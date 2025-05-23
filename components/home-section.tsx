@@ -104,17 +104,17 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
   const featureItems = [
     {
       title: "QUALITY HOOKAH AND TABAK",
-      icon: <Flame className="h-10 w-10 text-purple-400" />,
+      icon: <Flame className="h-8 w-8 md:h-10 md:w-10 text-purple-400" />,
       color: "from-purple-500/20 to-red-500/20",
     },
     {
       title: "PREMIUM KITCHEN AND FOOD",
-      icon: <UtensilsCrossed className="h-10 w-10 text-purple-400" />,
+      icon: <UtensilsCrossed className="h-8 w-8 md:h-10 md:w-10 text-purple-400" />,
       color: "from-purple-500/20 to-pink-500/20",
     },
     {
       title: "UNIQUE ATMOSPHERE AND SOUND",
-      icon: <Headphones className="h-10 w-10 text-purple-400" />,
+      icon: <Headphones className="h-8 w-8 md:h-10 md:w-10 text-purple-400" />,
       color: "from-purple-500/20 to-blue-500/20",
     },
   ]
@@ -144,7 +144,7 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}
-            className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"
+            className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black"
           />
 
           {/* Animated particles */}
@@ -159,17 +159,18 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
         style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
         className="container mx-auto px-4 z-10 text-center"
       >
+        {/* Main title section with better mobile spacing */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="mb-6"
+          className="mb-8 md:mb-12"
         >
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent leading-tight"
           >
             Premium Cocktail
           </motion.h1>
@@ -177,33 +178,37 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-2xl md:text-4xl font-light mb-8"
+            className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-light mb-6 md:mb-8 text-white/90"
           >
             Hookah & Terrace in Buchs
           </motion.h2>
         </motion.div>
 
+        {/* Feature cards with improved mobile layout */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto mb-8 md:mb-12"
         >
           {featureItems.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center p-6 backdrop-blur-sm bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
+              className="flex flex-col items-center p-4 md:p-6 backdrop-blur-sm bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all"
             >
               <div
-                className={`w-16 h-16 mb-4 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center`}
+                className={`w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-4 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center`}
               >
                 {item.icon}
               </div>
-              <h3 className="text-sm font-medium tracking-wider text-center">{item.title}</h3>
+              <h3 className="text-xs md:text-sm font-medium tracking-wider text-center leading-tight px-2">
+                {item.title}
+              </h3>
             </div>
           ))}
         </motion.div>
 
+        {/* Call to action button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -216,10 +221,10 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
               boxShadow: "0 0 25px rgba(168, 85, 247, 0.6)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full font-medium flex items-center group"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 md:px-8 py-3 rounded-full font-medium flex items-center group text-sm md:text-base"
           >
-            Anfrage für Privatveranstaltung
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <span className="whitespace-nowrap">Anfrage für Privatveranstaltung</span>
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 flex-shrink-0" />
           </motion.button>
         </motion.div>
       </motion.div>
