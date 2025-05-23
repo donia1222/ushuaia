@@ -1,7 +1,6 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 
 interface ScrollingTextProps {
   text?: string
@@ -20,27 +19,20 @@ export default function ScrollingText({
   fontWeight = "font-bold",
   className = "",
 }: ScrollingTextProps) {
-  const containerRef = useRef(null)
-
-  // Use scroll progress to control the horizontal position
-  const { scrollYProgress } = useScroll({
-    offset: ["start end", "end start"],
-  })
-
-  // Transform scroll progress to x position based on direction
-  const xPos = useTransform(
-    scrollYProgress,
-    [0, 1],
-    direction === "left-to-right" ? ["-100%", "100%"] : ["100%", "-100%"],
-  )
-
   return (
-    <div ref={containerRef} className={`w-full overflow-hidden py-8 ${className}`}>
-      <motion.div style={{ x: xPos }} className={`whitespace-nowrap ${fontSize} ${fontWeight} ${textColor}`}>
-        {/* Repeat text for continuous effect */}
-        <span className="opacity-80">{text}</span>
-        <span className="opacity-40 mx-8">•</span>
-        <span className="opacity-80">{text}</span>
+    <div className={`w-full overflow-hidden py-8 ${className}`}>
+      <motion.div
+        className={`whitespace-nowrap ${fontSize} ${fontWeight} ${textColor}`}
+        animate={{
+          x: direction === "left-to-right" ? ["-50%", "50%"] : ["50%", "-50%"],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "linear",
+        }}
+      >
+        {text} • {text} • {text}
       </motion.div>
     </div>
   )

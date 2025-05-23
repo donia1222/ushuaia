@@ -55,7 +55,7 @@ export default function GallerySection() {
     },
   ]
 
-  // Auto-scroll functionality
+  // Auto-scroll functionality - Continuous scroll with loop fix
   useEffect(() => {
     if (isAutoPlaying) {
       autoScrollRef.current = setInterval(() => {
@@ -63,25 +63,32 @@ export default function GallerySection() {
           const container = scrollContainerRef.current
           const maxScroll = container.scrollWidth - container.clientWidth
           const currentScroll = container.scrollLeft
+          const scrollStep = 2 // Scroll 2 pixels at a time for smooth movement
 
-          // Si llegamos al final, volvemos al inicio
-          if (currentScroll >= maxScroll) {
-            container.scrollTo({ left: 0, behavior: "smooth" })
+          // Check if we're near the end (within 20 pixels)
+          if (currentScroll >= maxScroll - 20) {
+            // Reset to beginning with a smooth transition
+            container.scrollTo({ left: 0, behavior: "auto" })
             setCurrentIndex(0)
           } else {
-            // Scroll suave y lento (2 píxeles por vez)
+            // Continue smooth scrolling
             container.scrollTo({
-              left: currentScroll + 2,
+              left: currentScroll + scrollStep,
               behavior: "auto",
             })
 
-            // Actualizar índice actual basado en la posición
+            // Update current index based on position
             const imageWidth = 400
-            const newIndex = Math.round(currentScroll / imageWidth)
-            setCurrentIndex(newIndex)
+            const gap = 24 // 6 * 4px (gap-6 in Tailwind)
+            const totalItemWidth = imageWidth + gap
+            const newIndex = Math.round(currentScroll / totalItemWidth)
+
+            if (newIndex !== currentIndex && newIndex < galleryImages.length) {
+              setCurrentIndex(newIndex)
+            }
           }
         }
-      }, 50) // 50ms = scroll muy suave y lento
+      }, 30) // 30ms for smoother animation
 
       return () => {
         if (autoScrollRef.current) {
@@ -93,7 +100,7 @@ export default function GallerySection() {
         clearInterval(autoScrollRef.current)
       }
     }
-  }, [isAutoPlaying])
+  }, [isAutoPlaying, currentIndex, galleryImages.length])
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
@@ -113,8 +120,11 @@ export default function GallerySection() {
   const scrollToImage = (index: number) => {
     if (scrollContainerRef.current) {
       const imageWidth = 400
+      const gap = 24 // 6 * 4px (gap-6 in Tailwind)
+      const scrollPosition = index * (imageWidth + gap)
+
       scrollContainerRef.current.scrollTo({
-        left: index * imageWidth,
+        left: scrollPosition,
         behavior: "smooth",
       })
       setCurrentIndex(index)
@@ -144,7 +154,7 @@ export default function GallerySection() {
       />
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] bg-repeat " />
+        <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] bg-repeat opacity-5" />
 
         {/* Floating gradient orbs */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
@@ -189,7 +199,14 @@ export default function GallerySection() {
 
         {/* Gallery Controls */}
         <div className="flex justify-center items-center gap-4 mb-8">
-
+          {!isAutoPlaying && (
+            <button
+              onClick={() => scroll("left")}
+              className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all hover:scale-110"
+            >
+              <ChevronLeft className="h-6 w-6 text-white" />
+            </button>
+          )}
 
           <div className="flex items-center gap-2">
             <button
@@ -209,7 +226,14 @@ export default function GallerySection() {
             <span className="text-white/60 text-sm">{isAutoPlaying ? "Auto Playing..." : "Auto Play"}</span>
           </div>
 
- 
+          {!isAutoPlaying && (
+            <button
+              onClick={() => scroll("right")}
+              className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all hover:scale-110"
+            >
+              <ChevronRight className="h-6 w-6 text-white" />
+            </button>
+          )}
         </div>
 
         {/* Horizontal Scrolling Gallery */}

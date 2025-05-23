@@ -21,7 +21,6 @@ export default function TestimonialsSection() {
   const isInView = useInView(ref, { once: false, amount: 0.2 })
   const [activeIndex, setActiveIndex] = useState(0)
   const [autoplay, setAutoplay] = useState(true)
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
   const [isMounted, setIsMounted] = useState(false)
 
   // Lista de testimonios
@@ -408,18 +407,10 @@ export default function TestimonialsSection() {
                 <div className="hidden md:flex flex-col w-1/3 ml-6 space-y-6">
                   {[(activeIndex + 1) % testimonials.length, (activeIndex + 2) % testimonials.length].map(
                     (index, i) => (
-                      <motion.div
+                      <div
                         key={`side-testimonial-${index}`}
-                        className={`bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-white/10 rounded-xl p-6 cursor-pointer transition-all h-1/2 flex flex-col justify-between ${
-                          hoveredCard === index ? "scale-105" : "scale-100"
-                        }`}
+                        className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-white/10 rounded-xl p-6 cursor-pointer transition-all h-1/2 flex flex-col justify-between"
                         onClick={() => selectTestimonial(index)}
-                        onMouseEnter={() => setHoveredCard(index)}
-                        onMouseLeave={() => setHoveredCard(null)}
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
-                        whileHover={{ scale: 1.05 }}
                       >
                         <div>
                           <div className="flex items-center mb-3">
@@ -443,7 +434,7 @@ export default function TestimonialsSection() {
                         <div className="text-right">
                           <span className="text-purple-400 text-xs">{testimonials[index].date}</span>
                         </div>
-                      </motion.div>
+                      </div>
                     ),
                   )}
                 </div>
