@@ -28,6 +28,9 @@ import EventsSection from "@/components/events-section"
 import ContactSection from "@/components/contact-section"
 import ParallaxTextSection from "@/components/parallax-text-section"
 import GallerySection from "@/components/gallery-section"
+import Testimonials from "@/components/testimonials-section"
+
+
 
 export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -221,14 +224,23 @@ export default function Page() {
             className="fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex flex-col"
           >
             <div className="flex justify-between items-center p-6 border-b border-white/10">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="relative"
+            >
+              <img
+                src="/logo.svg"
+                alt="USHUAIA"
+                className="h-10 w-auto"
+              />
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-                className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent"
-              >
-                USHUAIA
-              </motion.div>
+                className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                animate={{ width: hasScrolled ? "100%" : "0%" }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.div>
               <motion.button
                 onClick={() => setMobileMenuOpen(false)}
                 whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
@@ -296,6 +308,7 @@ export default function Page() {
       <AboutSection />
       <ParallaxTextSection />
       <GallerySection />
+            <Testimonials/>
       <LocationSection />
       <EventsSection />
       <ContactSection />
