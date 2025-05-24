@@ -134,7 +134,7 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
               src="/luxury-shisha-lounge-purple-1.png"
               alt="Ushuaia Shisha Bar"
               fill
-              className="object-cover opacity-70"
+              className="object-cover opacity-90"
               priority
             />
           </motion.div>
@@ -147,10 +147,7 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
             className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black"
           />
 
-          {/* Animated particles */}
-          <div className="absolute inset-0 overflow-hidden">
-            <ClientOnlyParticles />
-          </div>
+   
         </div>
       </div>
 

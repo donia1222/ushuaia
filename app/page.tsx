@@ -363,7 +363,6 @@ export default function Page() {
                   { label: "Über Uns", id: "about" },
                   { label: "Galerie", id: "gallery" },
                   { label: "Cantina Tex-Mex", id: "events" },
-                  { label: "Bewertungen", id: "testimonials" },
                   { label: "Kontakt", id: "contact" },
                 ].map((item, index) => (
                   <li key={index}>
