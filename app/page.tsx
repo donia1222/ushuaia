@@ -57,7 +57,6 @@ export default function Page() {
     { id: "gallery", label: "Gallery", icon: <Camera className="h-4 w-4" /> },
     { id: "location", label: "Location", icon: <MapPin className="h-4 w-4" /> },
     { id: "events", label: "Cantina Tex-Mex", icon: <UtensilsCrossed className="h-4 w-4" /> },
-    { id: "testimonials", label: "Bewertungen", icon: <Star className="h-4 w-4" /> },
     { id: "contact", label: "Contact", icon: <MessageCircle className="h-4 w-4" /> },
   ]
 
