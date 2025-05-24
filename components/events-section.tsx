@@ -260,15 +260,25 @@ export default function EventsSection() {
               Authentische Mexikanische Geschmäcker
             </motion.span>
           </motion.div>
+                       <motion.p
+                className="text-pink-100 leading-relaxed text-lg p-10"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: isEventsInView ? 0 : 20, opacity: isEventsInView ? 1 : 0 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                Genießen Sie unsere Premium-Margaritas und Tequila-Auswahl, begleitet von frischen Zutaten und
+                hausgemachten Salsas. Perfekt für einen entspannten Abend mit Freunden oder ein romantisches Dinner zu
+                zweit.
+              </motion.p>
         </motion.div>
 
         {/* Feature items with Mexican theme */}
         <div className="flex flex-wrap justify-center gap-6 mb-8">
           {[
-            { icon: "🌮", text: "Hausgemachte Tacos" },
+            { icon: "🌮", text: "Hausgemacht" },
             { icon: "🍹", text: "Premium Margaritas" },
             { icon: "🌶️", text: "Scharfe Salsas" },
-            { icon: "🥑", text: "Frische Guacamole" },
+            { icon: "🥑", text: "Frische" },
           ].map((item, index) => (
             <motion.div
               key={index}
@@ -303,41 +313,57 @@ export default function EventsSection() {
           ))}
         </div>
 
-        {/* Content grid with Mexican theme */}
-        <div className="flex justify-center max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50, rotateY: -20 }}
-            animate={{
-              opacity: isEventsInView ? 1 : 0,
-              y: isEventsInView ? 0 : 50,
-              rotateY: isEventsInView ? 0 : -20,
-            }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative rounded-2xl overflow-hidden group"
-          >
-            <Image
-              src="/cantinacopia.jpeg"
-              alt="Mexikanisches Essen und Getränke"
-              width={800}
-              height={600}
-              className="w-full h-auto rounded-2xl transition-transform duration-700 group-hover:scale-105"
-            />
+        {/* Content grid with Mexican theme - Two smaller images */}
+        <div className="flex justify-center max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
             <motion.div
-              className="absolute inset-0 bg-gradient-to-t from-pink-900/95 via-pink-900/80 to-transparent flex flex-col justify-end p-8"
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 50, rotateY: -20 }}
+              animate={{
+                opacity: isEventsInView ? 1 : 0,
+                y: isEventsInView ? 0 : 50,
+                rotateY: isEventsInView ? 0 : -20,
+              }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative rounded-2xl overflow-hidden group"
             >
-              <motion.p
-                className="text-pink-100 leading-relaxed text-lg text-center"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: isEventsInView ? 0 : 20, opacity: isEventsInView ? 1 : 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
+              <Image
+                src="/cantinacopia.jpeg"
+                alt="Mexikanisches Essen und Getränke"
+                width={600}
+                height={400}
+                className="w-full h-auto rounded-2xl transition-transform duration-700 group-hover:scale-105"
+              />
+              <motion.div
+                className="absolute inset-0 flex flex-col justify-end p-6"
+                initial={{ opacity: 1 }}
               >
-                Genießen Sie unsere Premium-Margaritas und Tequila-Auswahl, begleitet von frischen Zutaten und
-                hausgemachten Salsas. Perfekt für einen entspannten Abend mit Freunden oder ein romantisches Dinner zu
-                zweit.
-              </motion.p>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50, rotateY: 20 }}
+              animate={{
+                opacity: isEventsInView ? 1 : 0,
+                y: isEventsInView ? 0 : 50,
+                rotateY: isEventsInView ? 0 : 20,
+              }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative rounded-2xl overflow-hidden group"
+            >
+              <Image
+                src="/cantinacopiacopia.jpeg"
+                alt="Restaurante ambiente mexicano"
+                width={600}
+                height={400}
+                className="w-full h-auto rounded-2xl transition-transform duration-700 group-hover:scale-105"
+              />
+              <motion.div
+                className="absolute inset-0 flex flex-col justify-end p-6"
+                initial={{ opacity: 1 }}
+              >
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
 
         <motion.div
@@ -364,7 +390,10 @@ export default function EventsSection() {
         </motion.div>
       </div>
 
-
+      {/* Custom CSS for fonts */}
+      <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@300;400&display=swap');
+      `}</style>
     </section>
   )
 }
