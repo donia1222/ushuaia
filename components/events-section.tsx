@@ -118,7 +118,7 @@ export default function EventsSection() {
   const isEventsInView = useInView(ref, { once: false, amount: 0.2 })
 
   // Split title into individual letters for animation
-  const title = "Cantina Tex-Mex"
+  const title = "Kitchen by"
   const titleLetters = title.split("")
 
   return (
@@ -142,12 +142,7 @@ export default function EventsSection() {
         animate={{ opacity: isEventsInView ? 0.15 : 0 }}
         transition={{ duration: 1 }}
       >
-        <Image
-          src="/abstract-dark-purple-pattern.png"
-          alt="Hintergrundmuster"
-          fill
-          className="object-cover opacity-20"
-        />
+        <Image src="/IMG_8967.jpeg" alt="Hintergrundmuster" fill className="object-cover opacity-0" />
 
         {/* Animated particles */}
         <ClientOnlyParticles isEventsInView={isEventsInView} />
@@ -165,175 +160,151 @@ export default function EventsSection() {
           className="max-w-6xl mx-auto text-center mb-16"
         >
           {/* Main animated title */}
-          <div className="mb-8">
-            <motion.div
-              className="text-6xl md:text-8xl font-light mb-4 relative"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: isEventsInView ? 1 : 0.8 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              {titleLetters.map((letter, index) => (
-                <motion.span
-                  key={index}
-                  className="inline-block text-white"
-                  initial={{ opacity: 0, y: 50, rotateX: -90 }}
-                  animate={{
-                    opacity: isEventsInView ? 1 : 0,
-                    y: isEventsInView ? 0 : 50,
-                    rotateX: isEventsInView ? 0 : -90,
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    delay: index * 0.1,
-                    ease: "easeOut",
-                  }}
-                  whileHover={{
-                    scale: 1.2,
-                    textShadow: "0 0 20px rgba(255, 255, 255, 0.8)",
-                    transition: { duration: 0.2 },
-                  }}
-                  style={{
-                    textShadow: "0 0 30px rgba(255, 255, 255, 0.5)",
-                    fontFamily: "'Bebas Neue', cursive",
-                    fontWeight: "300",
-                  }}
-                >
-                  {letter === " " ? "\u00A0" : letter}
-                </motion.span>
-              ))}
-
-              {/* Decorative elements around title */}
-              <motion.div
-                className="absolute -top-4 -left-4 text-4xl"
-                initial={{ opacity: 0, rotate: 0 }}
-                animate={{
-                  opacity: isEventsInView ? 1 : 0,
-                  rotate: isEventsInView ? [0, 10, -10, 0] : 0,
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: 1,
-                }}
-              >
-                🌮
-              </motion.div>
-
-              <motion.div
-                className="absolute -top-4 -right-4 text-4xl"
-                initial={{ opacity: 0, rotate: 0 }}
-                animate={{
-                  opacity: isEventsInView ? 1 : 0,
-                  rotate: isEventsInView ? [0, -10, 10, 0] : 0,
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: 1.5,
-                }}
-              >
-                🌯
-              </motion.div>
-            </motion.div>
-
-            {/* Subtitle with typewriter effect */}
-            <motion.div
-              className="text-xl md:text-2xl text-purple-300 font-light tracking-wider"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isEventsInView ? 1 : 0 }}
-              transition={{ delay: 1.5, duration: 0.8 }}
-            >
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: isEventsInView ? "100%" : 0 }}
-                transition={{ delay: 2, duration: 2, ease: "easeInOut" }}
-                className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-purple-400"
-                style={{ borderRight: "2px solid #c084fc" }}
-              >
-                Authentische Mexikanische Geschmäcker
-              </motion.span>
-            </motion.div>
-          </div>
-
-          {/* Feature items with Mexican theme */}
-          <div className="flex flex-wrap justify-center gap-6 mb-8">
-            {[
-              { icon: "🌮", text: "Hausgemachte Tacos" },
-              { icon: "🍹", text: "Premium Margaritas" },
-              { icon: "🌶️", text: "Scharfe Salsas" },
-              { icon: "🥑", text: "Frische Guacamole" },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={{
-                  opacity: isEventsInView ? 1 : 0,
-                  scale: isEventsInView ? 1 : 0.8,
-                  y: isEventsInView ? 0 : 20,
-                }}
-                transition={{ delay: 0.5 + index * 0.2, duration: 0.6 }}
-                className="flex items-center bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-3"
-                whileHover={{
-                  scale: 1.1,
-                  boxShadow: "0 0 20px rgba(168, 85, 247, 0.4)",
-                }}
-              >
-                <motion.span
-                  className="text-2xl mr-3"
-                  animate={{
-                    rotate: isEventsInView ? [0, 10, -10, 0] : 0,
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Number.POSITIVE_INFINITY,
-                    delay: index * 0.5,
-                  }}
-                >
-                  {item.icon}
-                </motion.span>
-                <span className="text-purple-200 font-medium">{item.text}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Content grid with Mexican theme */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 50, rotateY: 20 }}
-            animate={{
-              opacity: isEventsInView ? 1 : 0,
-              y: isEventsInView ? 0 : 50,
-              rotateY: isEventsInView ? 0 : 20,
-            }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative rounded-2xl overflow-hidden group"
+            className="text-6xl md:text-8xl font-light mb-4 relative"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: isEventsInView ? 1 : 0.8 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            <Image
-              src="/cantina.jpeg"
-              alt="Mexikanisches Restaurant Interieur"
-              width={800}
-              height={600}
-              className="w-full h-auto rounded-2xl transition-transform duration-700 group-hover:scale-105"
-            />
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-t from-purple-900/95 via-purple-900/80 to-transparent flex flex-col justify-end p-8"
-              initial={{ opacity: 0.7 }}
-              whileHover={{ opacity: 1 }}
-            >
-              <motion.p
-                className="text-purple-100 leading-relaxed text-lg"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: isEventsInView ? 0 : 20, opacity: isEventsInView ? 1 : 0 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
+            {titleLetters.map((letter, index) => (
+              <motion.span
+                key={index}
+                className="inline-block text-white"
+                initial={{ opacity: 0, y: 50, rotateX: -90 }}
+                animate={{
+                  opacity: isEventsInView ? 1 : 0,
+                  y: isEventsInView ? 0 : 50,
+                  rotateX: isEventsInView ? 0 : -90,
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
+                whileHover={{
+                  scale: 1.2,
+                  textShadow: "0 0 20px rgba(255, 255, 255, 0.8)",
+                  transition: { duration: 0.2 },
+                }}
+                style={{
+                  textShadow: "0 0 30px rgba(255, 255, 255, 0.5)",
+                  fontFamily: "'Bebas Neue', cursive",
+                  fontWeight: "300",
+                }}
               >
-                Erleben Sie die authentische mexikanische Küche in unserem gemütlichen Cantina-Ambiente. Von
-                handgemachten Tortillas bis zu traditionellen Mole-Saucen - jedes Gericht wird mit Leidenschaft und
-                originalen Rezepten zubereitet.
-              </motion.p>
+                {letter === " " ? "\u00A0" : letter}
+              </motion.span>
+            ))}
+
+            {/* Decorative elements around title */}
+            <motion.div
+              className="absolute -top-4 -left-4 text-4xl"
+              initial={{ opacity: 0, rotate: 0 }}
+              animate={{
+                opacity: isEventsInView ? 1 : 0,
+                rotate: isEventsInView ? [0, 10, -10, 0] : 0,
+              }}
+              transition={{
+                duration: 3,
+                repeat: Number.POSITIVE_INFINITY,
+                delay: 1,
+              }}
+            >
+              🌮
+            </motion.div>
+
+            <motion.div
+              className="absolute -top-4 -right-4 text-4xl"
+              initial={{ opacity: 0, rotate: 0 }}
+              animate={{
+                opacity: isEventsInView ? 1 : 0,
+                rotate: isEventsInView ? [0, -10, 10, 0] : 0,
+              }}
+              transition={{
+                duration: 3,
+                repeat: Number.POSITIVE_INFINITY,
+                delay: 1.5,
+              }}
+            >
+              🌯
             </motion.div>
           </motion.div>
 
+          {/* Add the Cantina logo below the title */}
+          <motion.div
+            className="flex justify-center mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: isEventsInView ? 1 : 0,
+              scale: isEventsInView ? 1 : 0.8,
+            }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+          >
+            <Image src="/cantina_logocopia.png" alt="Cantina Logo" width={200} height={120} className="object-contain" />
+          </motion.div>
+
+          {/* Subtitle with typewriter effect */}
+          <motion.div
+            className="text-xl md:text-2xl text-purple-300 font-light tracking-wider"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isEventsInView ? 1 : 0 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
+          >
+            <motion.span
+              initial={{ width: 0 }}
+              animate={{ width: isEventsInView ? "100%" : 0 }}
+              transition={{ delay: 2, duration: 2, ease: "easeInOut" }}
+              className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-purple-400"
+              style={{ borderRight: "2px solid #c084fc" }}
+            >
+              Authentische Mexikanische Geschmäcker
+            </motion.span>
+          </motion.div>
+        </motion.div>
+
+        {/* Feature items with Mexican theme */}
+        <div className="flex flex-wrap justify-center gap-6 mb-8">
+          {[
+            { icon: "🌮", text: "Hausgemachte Tacos" },
+            { icon: "🍹", text: "Premium Margaritas" },
+            { icon: "🌶️", text: "Scharfe Salsas" },
+            { icon: "🥑", text: "Frische Guacamole" },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{
+                opacity: isEventsInView ? 1 : 0,
+                scale: isEventsInView ? 1 : 0.8,
+                y: isEventsInView ? 0 : 20,
+              }}
+              transition={{ delay: 0.5 + index * 0.2, duration: 0.6 }}
+              className="flex items-center bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-3"
+              whileHover={{
+                scale: 1.1,
+                boxShadow: "0 0 20px rgba(168, 85, 247, 0.4)",
+              }}
+            >
+              <motion.span
+                className="text-2xl mr-3"
+                animate={{
+                  rotate: isEventsInView ? [0, 10, -10, 0] : 0,
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  delay: index * 0.5,
+                }}
+              >
+                {item.icon}
+              </motion.span>
+              <span className="text-purple-200 font-medium">{item.text}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Content grid with Mexican theme */}
+        <div className="flex justify-center max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50, rotateY: -20 }}
             animate={{
@@ -341,7 +312,7 @@ export default function EventsSection() {
               y: isEventsInView ? 0 : 50,
               rotateY: isEventsInView ? 0 : -20,
             }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="relative rounded-2xl overflow-hidden group"
           >
             <Image
@@ -353,11 +324,10 @@ export default function EventsSection() {
             />
             <motion.div
               className="absolute inset-0 bg-gradient-to-t from-pink-900/95 via-pink-900/80 to-transparent flex flex-col justify-end p-8"
-              initial={{ opacity: 0.7 }}
-              whileHover={{ opacity: 1 }}
+              initial={{ opacity: 1 }}
             >
               <motion.p
-                className="text-pink-100 leading-relaxed text-lg"
+                className="text-pink-100 leading-relaxed text-lg text-center"
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: isEventsInView ? 0 : 20, opacity: isEventsInView ? 1 : 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
@@ -394,10 +364,7 @@ export default function EventsSection() {
         </motion.div>
       </div>
 
-      {/* Custom CSS for fonts */}
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@300;400&display=swap');
-      `}</style>
+
     </section>
   )
 }
