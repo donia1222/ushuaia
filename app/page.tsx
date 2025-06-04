@@ -53,11 +53,11 @@ export default function Page() {
   // Menu items with icons
   const menuItems = [
     { id: "home", label: "Home", icon: <Home className="h-4 w-4" /> },
-    { id: "about", label: "About", icon: <Info className="h-4 w-4" /> },
+    { id: "about", label: "Unsere Geschichte", icon: <Info className="h-4 w-4" /> },
     { id: "gallery", label: "Gallery", icon: <Camera className="h-4 w-4" /> },
     { id: "location", label: "Location", icon: <MapPin className="h-4 w-4" /> },
     { id: "events", label: "Cantina Tex-Mex", icon: <UtensilsCrossed className="h-4 w-4" /> },
-    { id: "contact", label: "Contact", icon: <MessageCircle className="h-4 w-4" /> },
+    { id: "contact", label: "Kontakt", icon: <MessageCircle className="h-4 w-4" /> },
   ]
 
   // Hide/show header based on scroll direction
