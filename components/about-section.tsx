@@ -159,6 +159,7 @@ export default function AboutSection() {
               <Image src="/IMG_3276.jpeg" alt="Ushuaia Interior" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
            
+           
               </div>
             </motion.div>
 
