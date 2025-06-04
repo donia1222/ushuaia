@@ -212,17 +212,7 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
           transition={{ delay: 1.4, duration: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 25px rgba(168, 85, 247, 0.6)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 md:px-8 py-3 rounded-full font-medium flex items-center group text-sm md:text-base"
-          >
-            <span className="whitespace-nowrap">Anfrage für Privatveranstaltung</span>
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 flex-shrink-0" />
-          </motion.button>
+
         </motion.div>
       </motion.div>
 

@@ -17,7 +17,6 @@ import {
   Home,
   Camera,
   UtensilsCrossed,
-  Star,
 } from "@/components/ui-icons"
 import { AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -30,6 +29,7 @@ import ContactSection from "@/components/contact-section"
 import ParallaxTextSection from "@/components/parallax-text-section"
 import GallerySection from "@/components/gallery-section"
 import TestimonialsSection from "@/components/testimonials-section"
+import CookieConsent from "@/components/cookie-consent" // Import the CookieConsent component
 
 export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -280,7 +280,7 @@ export default function Page() {
             </div>
             <div className="p-6 border-t border-white/10 flex justify-center space-x-4">
               <motion.a
-                href="#facebook"
+                href="https://www.facebook.com/ushuaiabuchs"
                 className="h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center"
                 whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.15)" }}
                 whileTap={{ y: 0 }}
@@ -288,7 +288,7 @@ export default function Page() {
                 <Facebook className="h-5 w-5 text-white/70" />
               </motion.a>
               <motion.a
-                href="#instagram"
+                href="https://www.instagram.com/ushuaiabuchs/"
                 className="h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center"
                 whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.15)" }}
                 whileTap={{ y: 0 }}
@@ -381,19 +381,19 @@ export default function Page() {
               <ul className="space-y-2 text-white/60 text-sm">
                 <li className="flex justify-between">
                   <span>Montag - Donnerstag</span>
-                  <span>17:00 - 23:00</span>
+                  <span>18:00 - 23:00</span>
                 </li>
                 <li className="flex justify-between">
                   <span>Freitag</span>
-                  <span>17:00 - 01:00</span>
+                  <span>18:00 - 01:00</span>
                 </li>
                 <li className="flex justify-between">
                   <span>Samstag</span>
-                  <span>14:00 - 01:00</span>
+                  <span>17:00 - 01:00</span>
                 </li>
                 <li className="flex justify-between">
                   <span>Sonntag</span>
-                  <span>14:00 - 23:00</span>
+                  <span>17:00 - 23:00</span>
                 </li>
               </ul>
             </div>
@@ -403,30 +403,25 @@ export default function Page() {
             <p className="text-white/40 text-sm">© {new Date().getFullYear()} Ushuaia Bar. Alle Rechte vorbehalten.</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <motion.a
-                href="#facebook"
+                href="https://www.facebook.com/ushuaiabuchs"
                 className="h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
                 whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.15)" }}
               >
                 <Facebook className="h-5 w-5 text-white/70" />
               </motion.a>
               <motion.a
-                href="#instagram"
+                href="https://www.instagram.com/ushuaiabuchs/"
                 className="h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
                 whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.15)" }}
               >
                 <Instagram className="h-5 w-5 text-white/70" />
               </motion.a>
-              <motion.a
-                href="#twitter"
-                className="h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
-                whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.15)" }}
-              >
-                <Twitter className="h-5 w-5 text-white/70" />
-              </motion.a>
+        
             </div>
           </div>
         </div>
       </footer>
+      <CookieConsent /> {/* Render the CookieConsent component */}
     </div>
   )
 }

@@ -1,16 +1,138 @@
 "use client"
 import { MapPin, Mail, Phone } from "lucide-react"
-// Remove useRef import since we're only using useInView
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { useState } from "react"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
 
 export default function ContactSection() {
-  // Remove useRef import since we're only using useInView
-
   const { ref: contactRef, inView: isContactInView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   })
+
+  const [openDialog, setOpenDialog] = useState<string | null>(null)
+
+  // Content for the dialogs
+  const dialogContent = {
+    privacy: {
+      title: "Datenschutzrichtlinie",
+      description: (
+        <>
+          <p className="mb-2">
+            Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Datenschutzrichtlinie erläutert, wie wir
+            Informationen sammeln, verwenden und schützen, die Sie uns über unsere Webseite oder bei der Nutzung unserer
+            Dienste zur Verfügung stellen.
+          </p>
+          <p className="mb-2">
+            Wir sammeln Daten, die Sie uns direkt zur Verfügung stellen, wie z.B. Name, E-Mail-Adresse und
+            Telefonnummer, wenn Sie uns über das Kontaktformular kontaktieren oder eine Reservierung vornehmen. Diese
+            Daten werden ausschließlich zur Bearbeitung Ihrer Anfragen und zur Erbringung unserer Dienstleistungen
+            verwendet.
+          </p>
+          <p className="mb-2">
+            Wir verwenden Cookies, um die Benutzerfreundlichkeit unserer Webseite zu verbessern und statistische Daten
+            über die Nutzung zu sammeln. Sie können die Verwendung von Cookies in Ihren Browsereinstellungen jederzeit
+            deaktivieren.
+          </p>
+          <p className="mb-2">
+            Ihre Daten werden nicht an Dritte weitergegeben, es sei denn, dies ist zur Erfüllung unserer vertraglichen
+            Pflichten erforderlich oder gesetzlich vorgeschrieben. Wir treffen angemessene technische und
+            organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen.
+          </p>
+          <p>
+            Sie haben das Recht, Auskunft über die von uns gespeicherten Daten zu erhalten, diese zu korrigieren oder
+            löschen zu lassen. Bitte kontaktieren Sie uns dazu über die unten angegebenen Kontaktdaten.
+          </p>
+        </>
+      ),
+    },
+    agb: {
+      title: "Allgemeine Geschäftsbedingungen (AGB)",
+      description: (
+        <>
+          <p className="mb-2">
+            Diese Allgemeinen Geschäftsbedingungen (AGB) regeln die Nutzung der Dienste und Angebote von Ushuaia Bar.
+            Mit der Nutzung unserer Webseite oder der Inanspruchnahme unserer Dienstleistungen erklären Sie sich mit
+            diesen AGB einverstanden.
+          </p>
+          <p className="mb-2">
+            <strong>1. Reservierungen:</strong> Reservierungen können online oder telefonisch vorgenommen werden. Eine
+            Reservierung ist erst verbindlich, wenn sie von uns bestätigt wurde. Bei Nichterscheinen ohne vorherige
+            Stornierung behalten wir uns das Recht vor, eine Gebühr zu erheben.
+          </p>
+          <p className="mb-2">
+            <strong>2. Preise und Zahlung:</strong> Alle Preise sind in Schweizer Franken (CHF) angegeben und verstehen
+            sich inklusive der gesetzlichen Mehrwertsteuer. Die Zahlung erfolgt vor Ort in bar oder mit gängigen
+            Kredit-/Debitkarten.
+          </p>
+          <p className="mb-2">
+            <strong>3. Haftung:</strong> Wir übernehmen keine Haftung für Schäden oder Verluste, die durch die Nutzung
+            unserer Dienste oder den Aufenthalt in unseren Räumlichkeiten entstehen, es sei denn, diese sind auf grobe
+            Fahrlässigkeit oder Vorsatz unsererseits zurückzuführen.
+          </p>
+          <p className="mb-2">
+            <strong>4. Jugendschutz:</strong> Wir halten uns strikt an die gesetzlichen Bestimmungen zum Jugendschutz.
+            Der Verkauf von Alkohol an Minderjährige ist untersagt. Alterskontrollen können durchgeführt werden.
+          </p>
+          <p className="mb-2">
+            <strong>5. Änderungen:</strong> Wir behalten uns das Recht vor, diese AGB jederzeit zu ändern. Die jeweils
+            aktuelle Version ist auf unserer Webseite verfügbar.
+          </p>
+          <p>Für weitere Fragen stehen wir Ihnen gerne zur Verfügung.</p>
+        </>
+      ),
+    },
+    impressum: {
+      title: "Impressum",
+      description: (
+        <>
+          <p className="mb-1">
+            <strong>Flomic GmbH</strong>
+          </p>
+          <p className="mb-1">Bahnhofstrasse 40</p>
+          <p className="mb-1">9470 Buchs</p>
+          <p className="mb-1">
+            Email:{" "}
+            <a href="mailto:info@ushuaia-bar.ch" className="text-purple-400 hover:text-purple-300 transition-colors">
+              info@ushuaia-bar.ch
+            </a>
+          </p>
+          <p className="mb-1">
+            Telefon:{" "}
+            <a href="tel:+41817560101" className="text-purple-400 hover:text-purple-300 transition-colors">
+              +41 81 756 01 01
+            </a>
+          </p>
+                    <div className="max-w-2xl mx-auto border-t border-white/10 pt-6">
+            <p className="text-white/40 text-sm">
+              <span className="font-medium text-white/60">Bildnachweis:</span> Einige Bilder stammen von Freepik.
+            </p>
+            <p className="text-white/40 text-sm mt-1">
+              Demo-Webseite vom{" "}
+              <a
+                href="https://lweb.ch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-400 hover:text-purple-300 transition-colors"
+              >
+                lweb.ch
+              </a>
+            </p>
+          </div>
+
+        </>
+      ),
+    },
+  }
 
   // Contact info items
   const contactItems = [
@@ -134,21 +256,53 @@ export default function ContactSection() {
 
         {/* Bildnachweis - Image Credits Section */}
         <div className="mt-16 text-center">
-          <div className="max-w-2xl mx-auto border-t border-white/10 pt-6">
-            <p className="text-white/40 text-sm">
-              <span className="font-medium text-white/60">Bildnachweis:</span> Einige Bilder stammen von Freepik.
-            </p>
-            <p className="text-white/40 text-sm mt-1">
-              Demo-Webseite vom{" "}
-              <a
-                href="https://lweb.ch"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-400 hover:text-purple-300 transition-colors"
-              >
-                lweb.ch
-              </a>
-            </p>
+
+          {/* New links for policies and impressum */}
+          <div className="max-w-2xl mx-auto border-t border-white/10 pt-6 mt-6 flex flex-wrap justify-center gap-4">
+            <Dialog open={openDialog === "privacy"} onOpenChange={(isOpen) => setOpenDialog(isOpen ? "privacy" : null)}>
+              <DialogTrigger asChild>
+                <Button variant="link" className="text-white/60 hover:text-white transition-colors">
+                  Datenschutzrichtlinie
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white border-white/10">
+                <DialogHeader>
+                  <DialogTitle>{dialogContent.privacy.title}</DialogTitle>
+                  <DialogDescription className="text-white/80">{dialogContent.privacy.description}</DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
+
+            <Dialog open={openDialog === "agb"} onOpenChange={(isOpen) => setOpenDialog(isOpen ? "agb" : null)}>
+              <DialogTrigger asChild>
+                <Button variant="link" className="text-white/60 hover:text-white transition-colors">
+                  AGB
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white border-white/10">
+                <DialogHeader>
+                  <DialogTitle>{dialogContent.agb.title}</DialogTitle>
+                  <DialogDescription className="text-white/80">{dialogContent.agb.description}</DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
+
+            <Dialog
+              open={openDialog === "impressum"}
+              onOpenChange={(isOpen) => setOpenDialog(isOpen ? "impressum" : null)}
+            >
+              <DialogTrigger asChild>
+                <Button variant="link" className="text-white/60 hover:text-white transition-colors">
+                  Impressum
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white border-white/10">
+                <DialogHeader>
+                  <DialogTitle>{dialogContent.impressum.title}</DialogTitle>
+                  <DialogDescription className="text-white/80">{dialogContent.impressum.description}</DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
