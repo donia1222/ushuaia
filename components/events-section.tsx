@@ -273,7 +273,7 @@ export default function EventsSection() {
         </motion.div>
 
         {/* Feature items with Mexican theme */}
-        <div className="flex flex-wrap justify-center gap-6 mb-8">
+        <div className="flex flex-wrap justify-center gap-6 mb-20">
           {[
             { icon: "🌮", text: "Hausgemacht" },
             { icon: "🍹", text: "Premium Margaritas" },

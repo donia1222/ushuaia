@@ -356,6 +356,7 @@ export default function Page() {
 
             <div>
               <h3 className="text-lg font-medium mb-4">Links</h3>
+            
               <ul className="space-y-2 text-white/60">
                 {[
                   { label: "Home", id: "home" },

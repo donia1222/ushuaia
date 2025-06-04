@@ -112,7 +112,7 @@ export default function ContactSection() {
               +41 81 756 01 01
             </a>
           </p>
-                    <div className="max-w-2xl mx-auto border-t border-white/10 pt-6">
+          <div className="max-w-2xl mx-auto border-t border-white/10 pt-6">
             <p className="text-white/40 text-sm">
               <span className="font-medium text-white/60">Bildnachweis:</span> Einige Bilder stammen von Freepik.
             </p>
@@ -128,7 +128,6 @@ export default function ContactSection() {
               </a>
             </p>
           </div>
-
         </>
       ),
     },
@@ -256,7 +255,6 @@ export default function ContactSection() {
 
         {/* Bildnachweis - Image Credits Section */}
         <div className="mt-16 text-center">
-
           {/* New links for policies and impressum */}
           <div className="max-w-2xl mx-auto border-t border-white/10 pt-6 mt-6 flex flex-wrap justify-center gap-4">
             <Dialog open={openDialog === "privacy"} onOpenChange={(isOpen) => setOpenDialog(isOpen ? "privacy" : null)}>
@@ -265,10 +263,12 @@ export default function ContactSection() {
                   Datenschutzrichtlinie
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white border-white/10">
+              <DialogContent className="max-w-[90vw] sm:max-w-[500px] max-h-[80vh] bg-gray-900 text-white border-white/10 overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle>{dialogContent.privacy.title}</DialogTitle>
-                  <DialogDescription className="text-white/80">{dialogContent.privacy.description}</DialogDescription>
+                  <DialogDescription className="text-white/80 max-h-[50vh] overflow-y-auto pr-2">
+                    {dialogContent.privacy.description}
+                  </DialogDescription>
                 </DialogHeader>
               </DialogContent>
             </Dialog>
@@ -279,10 +279,12 @@ export default function ContactSection() {
                   AGB
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white border-white/10">
+              <DialogContent className="max-w-[90vw] sm:max-w-[500px] max-h-[80vh] bg-gray-900 text-white border-white/10 overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle>{dialogContent.agb.title}</DialogTitle>
-                  <DialogDescription className="text-white/80">{dialogContent.agb.description}</DialogDescription>
+                  <DialogDescription className="text-white/80 max-h-[50vh] overflow-y-auto pr-2">
+                    {dialogContent.agb.description}
+                  </DialogDescription>
                 </DialogHeader>
               </DialogContent>
             </Dialog>
@@ -296,10 +298,12 @@ export default function ContactSection() {
                   Impressum
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white border-white/10">
+              <DialogContent className="max-w-[90vw] sm:max-w-[500px] max-h-[80vh] bg-gray-900 text-white border-white/10 overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle>{dialogContent.impressum.title}</DialogTitle>
-                  <DialogDescription className="text-white/80">{dialogContent.impressum.description}</DialogDescription>
+                  <DialogDescription className="text-white/80 max-h-[50vh] overflow-y-auto pr-2">
+                    {dialogContent.impressum.description}
+                  </DialogDescription>
                 </DialogHeader>
               </DialogContent>
             </Dialog>
