@@ -85,7 +85,7 @@ export default function TimelineSection() {
         {/* Logo Section */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <img
-            src="/logo.png"
+            src="/colibri.png"
             alt="Ushuaia Logo"
             className={`mx-auto mb-8 h-24 object-contain transition-opacity duration-700 ${
               isVisible ? "opacity-100" : "opacity-0"
