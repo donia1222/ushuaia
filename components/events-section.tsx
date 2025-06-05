@@ -373,7 +373,7 @@ export default function EventsSection() {
           className="mt-12 text-center"
         >
           <motion.a
-            href="https://cantinatexmex.ch"
+            href="https://www.cantinatexmex.ch/reservierung"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white px-10 py-4 rounded-full font-bold text-lg inline-flex items-center group shadow-lg shadow-purple-500/30 cursor-pointer"

@@ -199,32 +199,8 @@ export default function GallerySection() {
 
         {/* Gallery Controls */}
         <div className="flex justify-center items-center gap-4 mb-8">
-          {!isAutoPlaying && (
-            <button
-              onClick={() => scroll("left")}
-              className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all hover:scale-110"
-            >
-              <ChevronLeft className="h-6 w-6 text-white" />
-            </button>
-          )}
+      
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={toggleAutoPlay}
-              className={`w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-all ${
-                isAutoPlaying
-                  ? "bg-gradient-to-r from-red-600 to-pink-600 animate-pulse"
-                  : "bg-gradient-to-r from-purple-600 to-pink-600"
-              }`}
-            >
-              {isAutoPlaying ? (
-                <Pause className="h-4 w-4 text-white" />
-              ) : (
-                <Play className="h-4 w-4 text-white ml-0.5" />
-              )}
-            </button>
-            <span className="text-white/60 text-sm">{isAutoPlaying ? "Auto Playing..." : "Auto Play"}</span>
-          </div>
 
           {!isAutoPlaying && (
             <button

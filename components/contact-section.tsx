@@ -1,5 +1,5 @@
 "use client"
-import { MapPin, Mail, Phone } from "lucide-react"
+import { MapPin, Mail, Phone, Download } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { useState } from "react"
@@ -12,6 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
+import handleDownloadVCard from "@/app/utils/downloadVCard"
 
 export default function ContactSection() {
   const { ref: contactRef, inView: isContactInView } = useInView({
@@ -178,6 +179,38 @@ export default function ContactSection() {
           <p className="text-white/80">
             Wir freuen uns darauf, von Ihnen zu hören und Ihnen bei Ihren Anfragen zu helfen.
           </p>
+        </div>
+
+        {/* Improved vCard download button */}
+        <div className="max-w-md mx-auto mb-12">
+          <motion.button
+            id="downloadVCard"
+            className="group relative w-full overflow-hidden rounded-xl backdrop-blur-sm bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 hover:border-purple-400/50 p-6 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-1"
+            onClick={handleDownloadVCard}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {/* Gradient overlay on hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+            {/* Content */}
+            <div className="relative flex items-center justify-center space-x-3">
+              <div className="p-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 group-hover:from-purple-500/30 group-hover:to-pink-500/30 transition-all duration-300">
+                <Download className="w-6 h-6 text-purple-300 group-hover:text-purple-200 transition-colors duration-300" />
+              </div>
+              <div className="text-left">
+                <div className="text-lg font-semibold text-white group-hover:text-purple-100 transition-colors duration-300">
+                  Visitenkarte herunterladen
+                </div>
+                <div className="text-sm text-white/60 group-hover:text-white/80 transition-colors duration-300">
+                  Kontaktdaten als vCard speichern
+                </div>
+              </div>
+            </div>
+
+            {/* Subtle shine effect */}
+            <div className="absolute inset-0 -top-2 -left-2 w-4 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+          </motion.button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
