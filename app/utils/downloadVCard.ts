@@ -4,7 +4,7 @@ const handleDownloadVCard = () => {
   console.log("Iniciando descarga de la tarjeta de visita...")
 
   // URL de la imagen local - cambiar por el logo de Ushuaia Bar
-  const imageUrl = "/images-3copia.png"
+  const imageUrl = "/colibri.png"
 
   fetch(imageUrl)
     .then((res) => {
@@ -22,7 +22,7 @@ const handleDownloadVCard = () => {
         const vCardContent = `BEGIN:VCARD
 VERSION:3.0
 FN:Ushuaia Bar
-ORG:Fushuaia & Cantina 
+ORG:Ushuaia & Cantina 
 ADR:;;Bahnhofstrasse 40;Buchs;;9470;Switzerland
 TEL:+41817560101
 EMAIL:info@ushuaia-bar.ch
