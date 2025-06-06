@@ -237,10 +237,10 @@ export default function GallerySection() {
         {/* Gallery Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
           {[
-            { number: "8+", label: "Jahre Erfahrung" },
-            { number: "500+", label: "Zufriedene Gäste" },
+            { number: "9+", label: "Jahre Erfahrung" },
+            { number: "5000+", label: "Zufriedene Gäste" },
             { number: "50+", label: "Premium Tabaksorten" },
-            { number: "24/7", label: "Unvergessliche Momente" },
+            { number: "7", label: "Tage geöffnet" },
           ].map((stat, index) => (
             <motion.div
               key={index}
