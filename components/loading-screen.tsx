@@ -31,7 +31,8 @@ export default function LoadingScreen() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      // Added a delay to the exit animation to ensure the last text is readable
+      exit={{ opacity: 0, transition: { delay: 2, duration: 0.8, ease: "easeOut" } }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-black overflow-hidden"
     >
