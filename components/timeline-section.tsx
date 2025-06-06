@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import { Users, Award, Sparkles, Rocket } from "lucide-react"
+import { Users, Award, Sparkles, Rocket, MapPin } from "lucide-react"
 
 export default function TimelineSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -52,12 +52,21 @@ export default function TimelineSection() {
     },
     {
       year: "2022",
-      subYears: ["2023", "2024"],
+      subYears: ["2023"], // Updated to only include 2023
       title: "Premium Experience",
       description:
         "Entwicklung zur Premium Shisha Bar mit Cocktails, Hookah und Lounge. Einzigartige Atmosphäre geschaffen.",
       icon: <Sparkles className="h-6 w-6" />,
       image: "/luxury-shisha-lounge-purple-1.png",
+    },
+    {
+      year: "2024",
+      subYears: [],
+      title: "2024 - Neuer Standort & Expansion",
+      description:
+        "Ushuaia zieht an einen spektakuläreren Ort um und erweitert sein Angebot für ein noch exklusiveres Erlebnis.",
+      icon: <MapPin className="h-6 w-6" />, // Using MapPin for location change
+      image: "/IMG_3302.png",
     },
     {
       year: "2025",
@@ -89,7 +98,7 @@ export default function TimelineSection() {
         {/* Logo Section */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <img
-            src="/colibri.png"
+            src="/placeholder.svg?height=96&width=96"
             alt="Ushuaia Logo"
             className={`mx-auto mb-8 h-24 object-contain transition-opacity duration-700 ${
               isVisible ? "opacity-100" : "opacity-0"
