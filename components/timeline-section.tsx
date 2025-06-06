@@ -35,6 +35,7 @@ export default function TimelineSection() {
   const timelineEvents = [
     {
       year: "2016",
+      subYears: ["2017", "2018"],
       title: "Seit 2016 - Der Anfang",
       description:
         "Gründung der Ushuaia Bar mit der Vision, exzellenten Service und unvergessliche Erlebnisse zu bieten.",
@@ -43,6 +44,7 @@ export default function TimelineSection() {
     },
     {
       year: "2019",
+      subYears: ["2020", "2021"],
       title: "Etablierung & Wachstum",
       description: "8+ Jahre Erfahrung aufgebaut. Über 500+ zufriedene Gäste und 50+ Premium Tabaksorten im Angebot.",
       icon: <Award className="h-6 w-6" />,
@@ -50,6 +52,7 @@ export default function TimelineSection() {
     },
     {
       year: "2022",
+      subYears: ["2023", "2024"],
       title: "Premium Experience",
       description:
         "Entwicklung zur Premium Shisha Bar mit Cocktails, Hookah und Lounge. Einzigartige Atmosphäre geschaffen.",
@@ -58,6 +61,7 @@ export default function TimelineSection() {
     },
     {
       year: "2025",
+      subYears: [], // No sub-years for the last event as it's the current/future one
       title: "Kitchen by Cantina & Zukunft",
       description:
         "Eröffnung der Kitchen by Cantina mit authentischer mexikanischer Küche, Premium-Margaritas und Tequila-Auswahl.",
@@ -128,6 +132,15 @@ export default function TimelineSection() {
                   <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                     {event.year}
                   </span>
+                  {event.subYears && event.subYears.length > 0 && (
+                    <div className="mt-1 flex flex-col gap-0.5">
+                      {event.subYears.map((subYear) => (
+                        <span key={subYear} className="text-white/70 text-xs px-3 py-0.5 rounded-full">
+                          {subYear}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm rounded-full p-2 text-white">
                   {event.icon}
@@ -143,21 +156,20 @@ export default function TimelineSection() {
           ))}
         </div>
 
-
         {/* Elementos flotantes estáticos (sin animación) */}
         <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl" />
         <div className="absolute bottom-10 left-10 w-16 h-16 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-full blur-xl" />
       </div>
 
       <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+    `}</style>
     </section>
   )
 }
