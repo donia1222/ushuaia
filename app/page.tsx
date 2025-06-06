@@ -10,13 +10,13 @@ import {
   MessageCircle,
   Facebook,
   Instagram,
-  Twitter,
   Mail,
   Phone,
   ChevronDown,
   Home,
   Camera,
   UtensilsCrossed,
+  Download,
 } from "lucide-react" // Changed from @/components/ui-icons to lucide-react as per instructions
 import { AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -131,6 +131,75 @@ export default function Page() {
       })
     }
     setMobileMenuOpen(false)
+  }
+
+  const handleDownloadVCard = () => {
+    console.log("Iniciando descarga de la tarjeta de visita...")
+
+    const imageUrl = "/logo.png" // Using the logo from your site
+
+    fetch(imageUrl)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Error al obtener la imagen: ${res.statusText}`)
+        }
+        return res.blob()
+      })
+      .then((blob) => {
+        const reader = new FileReader()
+        reader.onloadend = () => {
+          const base64data = (reader.result as string).split(",")[1]
+          console.log("Imagen convertida a Base64.")
+
+          const vCardContent = `BEGIN:VCARD
+VERSION:3.0
+FN:Ushuaia Bar
+ORG:Ushuaia & Cantina 
+ADR:;;Bahnhofstrasse 40;Buchs;;9470;Switzerland
+TEL:+41817560101
+EMAIL:info@ushuaia-bar.ch
+URL:https://ushuaia-bar.ch
+PHOTO;ENCODING=b;TYPE=JPEG:${base64data}
+END:VCARD`
+
+          const vCardBlob = new Blob([vCardContent], { type: "text/vcard;charset=utf-8" })
+          const link = document.createElement("a")
+          link.href = URL.createObjectURL(vCardBlob)
+          link.download = "Ushuaia_Bar.vcf"
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+          console.log("Archivo .vcf descargado con imagen.")
+        }
+        reader.onerror = (error) => {
+          console.error("Error al leer la imagen:", error)
+          alert("Ocurrió un error al procesar la imagen para la tarjeta de visita.")
+        }
+        reader.readAsDataURL(blob)
+      })
+      .catch((error) => {
+        console.error("Error al cargar la imagen:", error)
+        alert("Ocurrió un error al descargar la tarjeta de visita. Se descargará sin imagen.")
+
+        const vCardContent = `BEGIN:VCARD
+VERSION:3.0
+FN:Ushuaia Bar
+ORG:Flomic GmbH
+ADR:;;Bahnhofstrasse 40;Buchs;;9470;Switzerland
+TEL:+41817560101
+EMAIL:info@ushuaia-bar.ch
+URL:https://ushuaia-bar.ch
+END:VCARD`
+
+        const vCardBlob = new Blob([vCardContent], { type: "text/vcard;charset=utf-8" })
+        const link = document.createElement("a")
+        link.href = URL.createObjectURL(vCardBlob)
+        link.download = "Ushuaia_Bar.vcf"
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        console.log("Archivo .vcf descargado sin imagen.")
+      })
   }
 
   return (
@@ -270,13 +339,13 @@ export default function Page() {
                     <X className="h-6 w-6 text-white" />
                   </motion.button>
                 </div>
-                <div className="flex flex-col items-center justify-center flex-1 p-6">
+                <div className="flex flex-col items-center justify-start flex-1 p-4 overflow-y-auto">
                   {menuItems.map((item, index) => (
                     <motion.button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
                       className={cn(
-                        "text-xl flex items-center gap-3 w-full py-4 px-6 my-1 rounded-lg transition-colors",
+                        "text-lg flex items-center gap-3 w-full py-3 px-4 my-1 rounded-lg transition-colors",
                         activeSection === item.id
                           ? "bg-gradient-to-r from-purple-600/20 to-pink-600/20 text-white"
                           : "text-white/70 hover:bg-white/5",
@@ -287,38 +356,42 @@ export default function Page() {
                       whileHover={{ x: 5 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 flex items-center justify-center">
                         {item.icon}
                       </div>
                       <span>{item.label}</span>
                     </motion.button>
                   ))}
                 </div>
-                <div className="p-6 border-t border-white/10 flex justify-center space-x-4">
+                <div className="p-4 border-t border-white/10 flex justify-center space-x-6 bg-black/50">
                   <motion.a
                     href="https://www.facebook.com/ushuaiabuchs"
-                    className="h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center"
-                    whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.15)" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center"
+                    whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.25)" }}
                     whileTap={{ y: 0 }}
                   >
-                    <Facebook className="h-5 w-5 text-white/70" />
+                    <Facebook className="h-6 w-6 text-white" />
                   </motion.a>
                   <motion.a
                     href="https://www.instagram.com/ushuaiabuchs/"
-                    className="h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center"
-                    whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.15)" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center"
+                    whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.25)" }}
                     whileTap={{ y: 0 }}
                   >
-                    <Instagram className="h-5 w-5 text-white/70" />
+                    <Instagram className="h-6 w-6 text-white" />
                   </motion.a>
-                  <motion.a
-                    href="#twitter"
-                    className="h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center"
-                    whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.15)" }}
-                    whileTap={{ y: 0 }}
+                  <motion.button
+                    onClick={handleDownloadVCard}
+                    className="h-12 w-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 flex items-center justify-center shadow-lg shadow-purple-500/25"
+                    whileHover={{ y: -3, scale: 1.05 }}
+                    whileTap={{ y: 0, scale: 0.95 }}
                   >
-                    <Twitter className="h-5 w-5 text-white/70" />
-                  </motion.a>
+                    <Download className="h-6 w-6 text-white" />
+                  </motion.button>
                 </div>
               </motion.div>
             )}
@@ -332,7 +405,7 @@ export default function Page() {
           <LocationSection />
           <EventsSection />
           <TestimonialsSection />
-          <ContactSection />
+          <ContactSection /> {/* Removed handleDownloadVCard prop */}
           {/* Footer */}
           <footer className="py-12 bg-black border-t border-white/10">
             <div className="container mx-auto px-4">
