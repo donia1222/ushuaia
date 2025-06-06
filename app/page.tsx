@@ -136,7 +136,7 @@ export default function Page() {
   const handleDownloadVCard = () => {
     console.log("Iniciando descarga de la tarjeta de visita...")
 
-    const imageUrl = "/logo.png" // Using the logo from your site
+    const imageUrl = "/colibri.png" // Using the logo from your site
 
     fetch(imageUrl)
       .then((res) => {
