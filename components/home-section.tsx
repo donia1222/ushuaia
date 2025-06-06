@@ -131,7 +131,7 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
             className="absolute inset-0"
           >
             <Image
-              src="/home.png"
+              src="/IMG_3298.png"
               alt="Ushuaia Shisha Bar"
               fill
               className="object-cover opacity-90"
