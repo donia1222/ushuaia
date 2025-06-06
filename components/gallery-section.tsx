@@ -39,7 +39,7 @@ export default function GallerySection() {
     {
       src: "/IMG_2709.jpeg",
       alt: "Gourmet Cuisine",
-      title: "Premium Kitchen & Food",
+      title: "Premium Cocktails & Food",
     },
     {
       src: "/IMG_3296.png",
