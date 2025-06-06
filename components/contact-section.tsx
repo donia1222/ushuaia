@@ -341,6 +341,17 @@ export default function ContactSection() {
               </DialogContent>
             </Dialog>
           </div>
+                <p className="text-white/40 text-sm mt-1">
+              Moderne & individuelle Webseiten{" "}
+              <a
+                href="https://lweb.ch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-400 hover:text-purple-300 transition-colors"
+              >
+                lweb.ch
+              </a>
+            </p>
         </div>
       </div>
     </section>

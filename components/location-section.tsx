@@ -117,7 +117,7 @@ export default function LocationSection() {
                 whileHover={{ scale: 1.05, zIndex: 10 }}
               >
                 <Image
-                  src="/cantina.jpeg"
+                  src="/download-1.png"
                   alt="Ushuaia Hookah"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -142,7 +142,7 @@ export default function LocationSection() {
                 whileHover={{ scale: 1.05, zIndex: 10 }}
               >
                 <Image
-                  src="/IMG_2667.jpeg"
+                  src="/download-2.png"
                   alt="Ushuaia Bar"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -223,7 +223,7 @@ export default function LocationSection() {
                 whileHover={{ scale: 1.05, zIndex: 10 }}
               >
                 <Image
-                  src="/download-3.png"
+                  src="/IMG_3276.jpeg"
                   alt="Ushuaia Lounge"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"

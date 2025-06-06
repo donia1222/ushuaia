@@ -403,18 +403,18 @@ export default function Page() {
                   <ul className="space-y-2 text-white/60 text-sm">
                     <li className="flex justify-between">
                       <span>Montag - Donnerstag</span>
-                      <span>18:00 - 23:00</span>
+                      <span>17:30 - 23:00</span>
                     </li>
                     <li className="flex justify-between">
                       <span>Freitag</span>
-                      <span>18:00 - 01:00</span>
+                      <span>17:30 - 01:00</span>
                     </li>
                     <li className="flex justify-between">
-                      <span>Sábado</span>
-                      <span>17:00 - 01:00</span>
+                      <span>Samstag</span>
+                      <span>17:30 - 01:00</span>
                     </li>
                     <li className="flex justify-between">
-                      <span>Domingo</span>
+                      <span>Sonntag</span>
                       <span>17:00 - 23:00</span>
                     </li>
                   </ul>

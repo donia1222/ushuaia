@@ -156,7 +156,7 @@ export default function AboutSection() {
             className="space-y-8"
           >
             <motion.div className="relative h-80 rounded-xl overflow-hidden" whileHover={{ scale: 1.03 }}>
-              <Image src="/IMG_3276.jpeg" alt="Ushuaia Interior" fill className="object-cover" />
+              <Image src="/usu.png" alt="Ushuaia Interior" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
            
            

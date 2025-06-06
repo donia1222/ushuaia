@@ -14,32 +14,32 @@ export default function GallerySection() {
   // Gallery images - you can replace these with actual images
   const galleryImages = [
     {
-      src: "IMG_2709.jpeg",
+      src: "IMG_3308.png",
       alt: "Luxury Shisha Lounge Interior",
       title: "Premium Lounge Atmosphere",
     },
     {
-      src: "/IMG_2667.jpeg",
+      src: "/IMG_3302.png",
       alt: "Premium Hookah Setup",
       title: "Exquisite Hookah Experience",
     },
     {
-      src: "/modern-cocktail-bar-purple-neon.png",
+      src: "/IMG_3310.png",
       alt: "Modern Cocktail Bar",
       title: "Craft Cocktails & Mixology",
     },
     {
-      src: "/young-woman-vaping-from-hookah-bar.jpg",
+      src: "/IMG_3306.png",
       alt: "Outdoor Terrace",
       title: "Relaxing Terrace Views",
     },
     {
-      src: "/download-5.png",
+      src: "/IMG_2709.jpeg",
       alt: "Gourmet Cuisine",
       title: "Premium Kitchen & Food",
     },
     {
-      src: "/download-3.png",
+      src: "/IMG_3296.png",
       alt: "DJ & Sound System",
       title: "Unique Atmosphere & Sound",
     },
