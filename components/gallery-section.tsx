@@ -1,17 +1,20 @@
 "use client"
 import { useRef, useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight, Play, Pause } from "@/components/ui-icons"
+import type React from "react"
+
+import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
 import Image from "next/image"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
 export default function GallerySection() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [currentIndex, setCurrentIndex] = useState(0)
-  const autoScrollRef = useRef<NodeJS.Timeout | null>(null)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false) // Start with manual control
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Gallery images - you can replace these with actual images
+  // Gallery images - same as before
   const galleryImages = [
     {
       src: "IMG_3308.png",
@@ -55,80 +58,59 @@ export default function GallerySection() {
     },
   ]
 
-  // Auto-scroll functionality - Continuous scroll with loop fix
+  // Much faster autoplay - 2.5 seconds per image
   useEffect(() => {
     if (isAutoPlaying) {
-      autoScrollRef.current = setInterval(() => {
-        if (scrollContainerRef.current) {
-          const container = scrollContainerRef.current
-          const maxScroll = container.scrollWidth - container.clientWidth
-          const currentScroll = container.scrollLeft
-          const scrollStep = 2 // Scroll 2 pixels at a time for smooth movement
-
-          // Check if we're near the end (within 20 pixels)
-          if (currentScroll >= maxScroll - 20) {
-            // Reset to beginning with a smooth transition
-            container.scrollTo({ left: 0, behavior: "auto" })
-            setCurrentIndex(0)
-          } else {
-            // Continue smooth scrolling
-            container.scrollTo({
-              left: currentScroll + scrollStep,
-              behavior: "auto",
-            })
-
-            // Update current index based on position
-            const imageWidth = 400
-            const gap = 24 // 6 * 4px (gap-6 in Tailwind)
-            const totalItemWidth = imageWidth + gap
-            const newIndex = Math.round(currentScroll / totalItemWidth)
-
-            if (newIndex !== currentIndex && newIndex < galleryImages.length) {
-              setCurrentIndex(newIndex)
-            }
-          }
-        }
-      }, 30) // 30ms for smoother animation
+      autoPlayRef.current = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % galleryImages.length)
+      }, 2500) // Changed from 5000 to 2500 for faster autoplay
 
       return () => {
-        if (autoScrollRef.current) {
-          clearInterval(autoScrollRef.current)
+        if (autoPlayRef.current) {
+          clearInterval(autoPlayRef.current)
         }
       }
     } else {
-      if (autoScrollRef.current) {
-        clearInterval(autoScrollRef.current)
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current)
       }
     }
-  }, [isAutoPlaying, currentIndex, galleryImages.length])
+  }, [isAutoPlaying, galleryImages.length])
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 400
-      const newScrollLeft =
-        direction === "left"
-          ? scrollContainerRef.current.scrollLeft - scrollAmount
-          : scrollContainerRef.current.scrollLeft + scrollAmount
+  // Touch handlers for swipe gestures
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
 
-      scrollContainerRef.current.scrollTo({
-        left: newScrollLeft,
-        behavior: "smooth",
-      })
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      nextImage()
+    }
+    if (isRightSwipe) {
+      prevImage()
     }
   }
 
-  const scrollToImage = (index: number) => {
-    if (scrollContainerRef.current) {
-      const imageWidth = 400
-      const gap = 24 // 6 * 4px (gap-6 in Tailwind)
-      const scrollPosition = index * (imageWidth + gap)
+  const nextImage = () => {
+    setCurrentIndex((prev) => (prev + 1) % galleryImages.length)
+  }
 
-      scrollContainerRef.current.scrollTo({
-        left: scrollPosition,
-        behavior: "smooth",
-      })
-      setCurrentIndex(index)
-    }
+  const prevImage = () => {
+    setCurrentIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+  }
+
+  const goToImage = (index: number) => {
+    setCurrentIndex(index)
   }
 
   const toggleAutoPlay = () => {
@@ -146,46 +128,11 @@ export default function GallerySection() {
       ref={galleryRef}
       className="py-20 bg-gradient-to-b from-purple-950/30 to-black relative overflow-hidden"
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isGalleryInView ? 0.1 : 0 }}
-        transition={{ duration: 1 }}
-        className="absolute inset-0 bg-[url('/abstract-smoke.png')] bg-repeat"
-      />
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] bg-repeat opacity-5" />
-
-        {/* Floating gradient orbs */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full blur-3xl" />
-
-        {/* Animated Bubbles - only when autoplay is active */}
-        {isAutoPlaying && (
-          <div className="absolute inset-0 overflow-hidden">
-            {Array.from({ length: 15 }).map((_, i) => {
-              const size = Math.random() * 20 + 10
-              const left = Math.random() * 100
-              const animationDuration = Math.random() * 10 + 8
-              const delay = Math.random() * 5
-
-              return (
-                <div
-                  key={i}
-                  className="absolute rounded-full bg-gradient-to-r from-purple-400/20 to-pink-400/20 animate-float"
-                  style={{
-                    width: `${size}px`,
-                    height: `${size}px`,
-                    left: `${left}%`,
-                    bottom: "-50px",
-                    animation: `floatUp ${animationDuration}s linear infinite`,
-                    animationDelay: `${delay}s`,
-                  }}
-                />
-              )
-            })}
-          </div>
-        )}
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -195,79 +142,95 @@ export default function GallerySection() {
             Galerie
           </h2>
           <p className="text-white/80 text-lg">Entdecken Sie die einzigartige Atmosphäre unseres Premium Shisha Bars</p>
+          <p className="text-white/60 text-sm mt-2">Wischen Sie oder verwenden Sie die Pfeile zum Navigieren</p>
         </div>
 
         {/* Gallery Controls */}
         <div className="flex justify-center items-center gap-4 mb-8">
-      
+          <button
+            onClick={prevImage}
+            className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all hover:scale-110"
+          >
+            <ChevronLeft className="h-6 w-6 text-white" />
+          </button>
 
+          <button
+            onClick={toggleAutoPlay}
+            className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 flex items-center justify-center transition-all hover:scale-110"
+          >
+            {isAutoPlaying ? <Pause className="h-5 w-5 text-white" /> : <Play className="h-5 w-5 text-white" />}
+          </button>
 
-          {!isAutoPlaying && (
-            <button
-              onClick={() => scroll("right")}
-              className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all hover:scale-110"
-            >
-              <ChevronRight className="h-6 w-6 text-white" />
-            </button>
-          )}
+          <button
+            onClick={nextImage}
+            className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all hover:scale-110"
+          >
+            <ChevronRight className="h-6 w-6 text-white" />
+          </button>
         </div>
 
-        {/* Horizontal Scrolling Gallery */}
-        <div className="relative">
+        {/* Main Gallery Display */}
+        <div className="relative max-w-4xl mx-auto">
           <div
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4"
-            style={{
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
+            className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-96 h-64 relative group cursor-pointer"
-                onClick={() => !isAutoPlaying && scrollToImage(index)}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 300 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -300 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="absolute inset-0"
               >
-                <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-purple-900/20 to-pink-900/20 border border-white/10">
-                  <Image
-                    src={image.src || "/placeholder.svg"}
-                    alt={image.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                <Image
+                  src={galleryImages[currentIndex].src || "/placeholder.svg"}
+                  alt={galleryImages[currentIndex].alt}
+                  fill
+                  className="object-cover"
+                />
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                {/* Image Info */}
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <motion.h3
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-white font-bold text-2xl md:text-3xl mb-2"
+                  >
+                    {galleryImages[currentIndex].title}
+                  </motion.h3>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "4rem" }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                    className="h-1 bg-gradient-to-r from-purple-500 to-pink-500"
                   />
-
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  {/* Image Title */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-white font-semibold text-lg mb-2">{image.title}</h3>
-                    <div className="w-12 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500" />
-                  </div>
-
-                  {/* Hover Effect Border */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-purple-500/50 transition-all duration-300" />
                 </div>
-              </div>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* Custom Scrollbar */}
-          <div className="mt-8 flex justify-center">
-            <div className="flex gap-2">
-              {galleryImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => !isAutoPlaying && scrollToImage(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "bg-gradient-to-r from-purple-500 to-pink-500 w-8"
-                      : "bg-white/30 hover:bg-white/50"
-                  }`}
-                  disabled={isAutoPlaying}
-                />
-              ))}
-            </div>
+        
+          {/* Progress Indicators */}
+          <div className="flex justify-center mt-6 gap-2">
+            {galleryImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToImage(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "bg-gradient-to-r from-purple-500 to-pink-500 w-8"
+                    : "bg-white/30 hover:bg-white/50 w-2"
+                }`}
+              />
+            ))}
           </div>
         </div>
 
@@ -279,17 +242,22 @@ export default function GallerySection() {
             { number: "50+", label: "Premium Tabaksorten" },
             { number: "24/7", label: "Unvergessliche Momente" },
           ].map((stat, index) => (
-            <div key={index} className="text-center">
+            <motion.div
+              key={index}
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
               <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-2">
                 {stat.number}
               </div>
               <div className="text-white/60 text-sm">{stat.label}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-
-
     </section>
   )
 }
