@@ -229,62 +229,6 @@ export default function ContactSection() {
           ))}
         </div>
 
-        <div className="mt-16 max-w-2xl mx-auto backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-8">
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label htmlFor="name" className="block text-sm font-medium">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                  placeholder="Ihr Name"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="block text-sm font-medium">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                  placeholder="Ihre Email"
-                />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="subject" className="block text-sm font-medium">
-                Betreff
-              </label>
-              <input
-                type="text"
-                id="subject"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                placeholder="Betreff Ihrer Nachricht"
-              />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="message" className="block text-sm font-medium">
-                Nachricht
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                placeholder="Ihre Nachricht"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity hover:shadow-lg"
-            >
-              Nachricht senden
-            </button>
-          </form>
-        </div>
 
         {/* Bildnachweis - Image Credits Section */}
         <div className="mt-16 text-center">
