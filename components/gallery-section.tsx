@@ -139,10 +139,10 @@ export default function GallerySection() {
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-            Galerie
+            Gallery
           </h2>
           <p className="text-white/80 text-lg">Entdecken Sie die einzigartige Atmosphäre unseres Premium Shisha Bars</p>
-          <p className="text-white/60 text-sm mt-2">Wischen Sie oder verwenden Sie die Pfeile zum Navigieren</p>
+        
         </div>
 
         {/* Gallery Controls */}
