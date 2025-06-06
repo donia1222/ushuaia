@@ -64,9 +64,9 @@ export default function TimelineSection() {
       subYears: [],
       title: "2024 - Neuer Standort & Expansion",
       description:
-        "Ushuaia zieht an einen spektakuläreren Ort um und erweitert sein Angebot für ein noch exklusiveres Erlebnis.",
+        "Ushuaia zieht an einen spektakuläreren Ort um und erweitert sein Angebot für un noch exklusiveres Erlebnis.",
       icon: <MapPin className="h-6 w-6" />, // Using MapPin for location change
-      image: "/IMG_3302.png",
+      image: "/IMG_3296.png",
     },
     {
       year: "2025",
@@ -98,7 +98,7 @@ export default function TimelineSection() {
         {/* Logo Section */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <img
-            src="/placeholder.svg?height=96&width=96"
+            src="/colibri.png" // This line is confirmed to be as you requested
             alt="Ushuaia Logo"
             className={`mx-auto mb-8 h-24 object-contain transition-opacity duration-700 ${
               isVisible ? "opacity-100" : "opacity-0"
