@@ -1,6 +1,8 @@
 import type React from "react"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from '@vercel/analytics/next';
+
 
 export const metadata = {
   title: "Ushuaia - Premium Cocktail, Hookah & Terrace",
@@ -19,6 +21,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           {children}
+           <Analytics />
         </ThemeProvider>
       </body>
     </html>
