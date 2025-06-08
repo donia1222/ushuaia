@@ -399,10 +399,11 @@ END:VCARD`
           {/* Sections */}
           <HomeSection scrollIndicator={false} />
           <AboutSection />
+            <LocationSection />
           <Timeline />
           <ParallaxTextSection />
           <GallerySection />
-          <LocationSection />
+        
           <EventsSection />
           <TestimonialsSection />
           <ContactSection /> {/* Removed handleDownloadVCard prop */}

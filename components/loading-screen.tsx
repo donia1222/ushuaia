@@ -58,7 +58,7 @@ export default function LoadingScreen() {
         className="relative h-48 w-48 z-10"
       >
         <Image
-          src="/colibri.png"
+          src="/4llgo2.jpeg"
           alt="Loading background image"
           fill
           className="object-contain drop-shadow-2xl" // Use object-contain to prevent cropping
