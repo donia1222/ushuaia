@@ -16,7 +16,7 @@ interface GalleryImage {
 
 export default function ProfessionalGallerySection() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(false)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [activeCategory, setActiveCategory] = useState("all")
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
