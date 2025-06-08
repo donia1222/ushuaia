@@ -321,7 +321,7 @@ export default function ProfessionalGallerySection() {
         {/* Professionelle Statistiken */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
           {[
-            { number: "10+", label: "Jahre Erfahrung" },
+            { number: "9+", label: "Jahre Erfahrung" },
             { number: "8000+", label: "Zufriedene Kunden" },
             { number: "300+", label: "Plätze" },
             { number: "7", label: "Tage geöffnet" },
