@@ -178,9 +178,7 @@ export default function ProfessionalGallerySection() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
           Ambiente
           </h2>
-          <p className="text-white/80 text-lg">
-            Entdecken Sie das einzigartige Erlebnis in jedem unserer professionellen Bereiche
-          </p>
+       
         </div>
 
         {/* Professionelle Navigation */}
@@ -204,13 +202,7 @@ export default function ProfessionalGallerySection() {
             ))}
           </div>
 
-          {/* Kategorie-Info */}
-          <div className="text-center mb-8">
-            <p className="text-white/60">
-              {filteredImages.length} {filteredImages.length === 1 ? "Bild" : "Bilder"} in{" "}
-              {categories.find((cat) => cat.id === activeCategory)?.name}
-            </p>
-          </div>
+    
         </div>
 
         {/* Galerie-Steuerung */}
