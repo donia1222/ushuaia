@@ -35,7 +35,7 @@ export default function ProfessionalGallerySection() {
   // Galerie-Bilder nach Kategorien organisiert
   const allGalleryImages: GalleryImage[] = [
     {
-      src: "/young-woman-vaping-from-hookah-bar.jpg",
+      src: "/3f124c1c-3369-4537-bfee-6a8b663daab7.JPG",
       alt: "Luxuriöses Shisha-Lounge Interieur",
       title: "Premium Lounge-Atmosphäre",
       category: "shisha",
@@ -73,13 +73,13 @@ export default function ProfessionalGallerySection() {
     },
     
     {
-      src: "/3f124c1c-3369-4537-bfee-6a8b663daab7.JPG",
+      src: "/99bb6030-1e61-4f03-9511-4d69f4aea9e7.JPG",
       alt: "VIP-Terrassenbereich",
       title: "VIP-Terrassenbereich",
       category: "terraza",
     },
     {
-      src: "/cantinacopiacopia.jpeg",
+      src: "/24093598-7b93-417c-b731-5460b82ad02c.JPG",
       alt: "Gehobenes Speiseerlebnis",
       title: "Tex-Mex Food",
       category: "restaurante",
@@ -323,8 +323,8 @@ export default function ProfessionalGallerySection() {
           {[
             { number: "10+", label: "Jahre Erfahrung" },
             { number: "8000+", label: "Zufriedene Kunden" },
-            { number: "5", label: "Einzigartige Bereiche" },
-            { number: "24/7", label: "Premium-Service" },
+            { number: "300+", label: "Plätze" },
+            { number: "7", label: "Tage geöffnet" },
           ].map((stat, index) => (
             <motion.div
               key={index}
