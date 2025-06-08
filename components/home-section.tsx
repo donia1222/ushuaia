@@ -108,7 +108,7 @@ export default function HomeSection({ scrollIndicator }: HomeSectionProps) {
       color: "from-purple-500/20 to-red-500/20",
     },
     {
-      title: "PREMIUM KITCHEN AND FOOD",
+      title: "TEX-MEX FOOD",
       icon: <UtensilsCrossed className="h-8 w-8 md:h-10 md:w-10 text-purple-400" />,
       color: "from-purple-500/20 to-pink-500/20",
     },
