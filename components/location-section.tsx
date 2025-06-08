@@ -91,7 +91,7 @@ export default function LocationSection() {
           >
             <motion.div className="relative h-80 rounded-xl overflow-hidden group" whileHover={{ scale: 1.02 }}>
               <Image
-                src="/header.jpeg"
+                src="/IMG_3295.png"
                 alt="Ushuaia Location"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -117,7 +117,7 @@ export default function LocationSection() {
                 whileHover={{ scale: 1.05, zIndex: 10 }}
               >
                 <Image
-                  src="/download-1.png"
+                  src="/24093598-7b93-417c-b731-5460b82ad02c.JPG"
                   alt="Ushuaia Hookah"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -142,7 +142,7 @@ export default function LocationSection() {
                 whileHover={{ scale: 1.05, zIndex: 10 }}
               >
                 <Image
-                  src="/download-2.png"
+                  src="/99bb6030-1e61-4f03-9511-4d69f4aea9e7.JPG"
                   alt="Ushuaia Bar"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -172,7 +172,7 @@ export default function LocationSection() {
               whileHover={{ scale: 1.05 }}
             >
               <Image
-                src="/IMG_2709.jpeg"
+                src="/IMG_3310.JPG"
                 alt="Ushuaia Terrace"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -182,7 +182,7 @@ export default function LocationSection() {
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
               >
-                <p className="text-white/90 text-xs">Unsere exklusive Terrasse</p>
+                <p className="text-white/90 text-xs">Unsere exklusive Bar</p>
               </motion.div>
             </motion.div>
             <div className="grid grid-cols-2 gap-4">
@@ -198,7 +198,7 @@ export default function LocationSection() {
                 whileHover={{ scale: 1.05, zIndex: 10 }}
               >
                 <Image
-                  src="/IMG_8901.jpeg"
+                  src="/95d4a4e5-f14d-4e34-8d9b-201ac64e1f66.JPG"
                   alt="Ushuaia Cocktail"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -223,7 +223,7 @@ export default function LocationSection() {
                 whileHover={{ scale: 1.05, zIndex: 10 }}
               >
                 <Image
-                  src="/IMG_3276.jpeg"
+                  src="/df092763-b4bc-4b51-b40f-8a915dba5b42.JPG"
                   alt="Ushuaia Lounge"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
