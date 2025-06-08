@@ -36,7 +36,7 @@ export default function ScrollingText({
   const x = useTransform(scrollYProgress, [0, 1], [`${-50 * multiplier * speed}%`, `${50 * multiplier * speed}%`])
 
   return (
-    <div ref={containerRef} className={`w-full overflow-hidden py-8 ${className}`}>
+    <div ref={containerRef} className={`w-full overflow-hidden py-4 ${className}`}>
       <motion.div className={`whitespace-nowrap ${fontSize} ${fontWeight} ${textColor}`} style={{ x }}>
         {text} • {text} • {text}
       </motion.div>

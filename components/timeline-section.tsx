@@ -95,12 +95,12 @@ export default function TimelineSection() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Logo Section */}
+        {/* Logo Section with Floating Animation */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <img
-            src="/4llgo2.jpeg" // This line is confirmed to be as you requested
+            src="/4llgo2.jpeg"
             alt="Ushuaia Logo"
-            className={`mx-auto mb-8 h-40 object-contain transition-opacity duration-700 ${
+            className={`mx-auto mb-8 h-40 object-contain transition-opacity duration-700 floating-logo ${
               isVisible ? "opacity-100" : "opacity-0"
             }`}
           />
@@ -171,14 +171,27 @@ export default function TimelineSection() {
       </div>
 
       <style jsx>{`
-      .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-      }
-    `}</style>
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .floating-logo {
+          animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+      `}</style>
     </section>
   )
 }
