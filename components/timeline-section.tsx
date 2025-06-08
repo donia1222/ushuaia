@@ -40,7 +40,7 @@ export default function TimelineSection() {
       description:
         "Gründung der Ushuaia Bar mit der Vision, exzellenten Service und unvergessliche Erlebnisse zu bieten.",
       icon: <Rocket className="h-6 w-6" />,
-      image: "/473995058_1149256516903267_1130238879082676197_n.jpg",
+      image: "/f435f779-e2aa-4261-b45b-7270cf973d9f.JPG",
     },
     {
       year: "2019",
@@ -48,7 +48,7 @@ export default function TimelineSection() {
       title: "Etablierung & Wachstum",
       description: "8+ Jahre Erfahrung aufgebaut. Über 500+ zufriedene Gäste und 50+ Premium Tabaksorten im Angebot.",
       icon: <Award className="h-6 w-6" />,
-      image: "/modern-cocktail-bar-purple-neon.png",
+      image: "/473995058_1149256516903267_1130238879082676197_n.jpg",
     },
     {
       year: "2022",
@@ -66,7 +66,7 @@ export default function TimelineSection() {
       description:
         "Ushuaia zieht an einen spektakuläreren Ort um und erweitert sein Angebot für un noch exklusiveres Erlebnis.",
       icon: <MapPin className="h-6 w-6" />, // Using MapPin for location change
-      image: "/IMG_3296.png",
+      image: "/IMG_3298.png",
     },
     {
       year: "2025",
