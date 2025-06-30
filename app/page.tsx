@@ -429,25 +429,21 @@ END:VCARD`
                 </div>
               </div>
 
-              <div className="space-y-4 text-white/80 mb-20 text-center">
-                <p className="text-lg">
-                  Der Zutritt zum <span className="text-purple-400 font-semibold text-center">Shisha Bar</span> ist ab 18 Jahren gestattet.
-                </p>
-                
-                <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
-                  <h3 className="text-white font-medium mb-2 flex items-center gap-2 text-center">
-                    <X className="h-4 w-4 text-red-400" />
-                    Reservierungsrichtlinie
-                  </h3>
-                  <p className="text-sm text-white/70 leading-relaxed">
-                    Im Shisha Bar werden <span className="text-red-400 font-medium">keine Reservierungen</span> angenommen.
-                  </p>
-                  <p className="text-sm text-white/70 leading-relaxed mt-2">
-                    Nur in der <span className="text-purple-400 font-medium">Cantina Tex-Mex</span> sind Reservierungen möglich. 
-                    Bei der Ankunft muss ein <span className="text-amber-400 font-medium">gültiger Ausweis</span> vorgelegt werden.
-                  </p>
-                </div>
-              </div>
+   <div className="space-y-4 text-white/80 mb-20 text-center">
+  <p className="text-lg">
+    Der Zutritt zum <span className="text-purple-400 font-semibold text-center">Shisha Bar</span> ist ab 18 Jahren gestattet.
+  </p>
+
+  <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
+    <p className="text-sm text-white/70 leading-relaxed">
+      Im <span className="text-purple-400 font-medium">Shisha Bar</span> werden <span className="text-red-400 font-medium">nur für Geburtstage</span> Reservierungen angenommen.
+    </p>
+
+    <p className="text-sm text-white/70 leading-relaxed mt-2">
+      Bei der Ankunft muss ein <span className="text-amber-400 font-medium">gültiger Ausweis</span> vorgelegt werden.
+    </p>
+  </div>
+</div>
             <div className="container mx-auto px-4">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
                 <div className="space-y-4">
