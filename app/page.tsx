@@ -17,6 +17,8 @@ import {
   Camera,
   UtensilsCrossed,
   Download,
+  Shield,
+  AlertTriangle,
 } from "lucide-react" // Changed from @/components/ui-icons to lucide-react as per instructions
 import { AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -32,6 +34,7 @@ import TestimonialsSection from "@/components/testimonials-section"
 import CookieConsent from "@/components/cookie-consent" // Import the CookieConsent component
 import Timeline from "@/components/timeline-section" // Import the CookieConsent component
 import LoadingScreen from "@/components/loading-screen" // Import the new LoadingScreen component
+
 
 export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -406,9 +409,41 @@ END:VCARD`
         
           <EventsSection />
           <TestimonialsSection />
+          
           <ContactSection /> {/* Removed handleDownloadVCard prop */}
           {/* Footer */}
           <footer className="py-12 bg-black border-t border-white/10">
+           <div className="flex justify-center mt-20">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center">
+                  <Shield className="h-8 w-8 text-white" />
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-2xl font-bold text-white bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent text-center">
+                  Altersbestätigung
+                </h2>
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <AlertTriangle className="h-5 w-5 text-amber-400" />
+                  <span className="text-amber-400 font-medium">18+ Erforderlich</span>
+                </div>
+              </div>
+
+  <div className="space-y-4 text-white/80 mb-20 text-center">
+  <p className="text-lg">
+    Der Zutritt zum <span className="text-purple-400 font-semibold text-center">Shisha Bar</span> ist ab 18 Jahren gestattet.
+  </p>
+
+  <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
+    <p className="text-sm text-white/70 leading-relaxed">
+      Im <span className="text-purple-400 font-medium">Shisha Bar</span> werden <span className="text-red-400 font-medium">nur für Geburtstage</span> Reservierungen angenommen.
+    </p>
+
+    <p className="text-sm text-white/70 leading-relaxed mt-2">
+      Bei der Ankunft muss ein <span className="text-amber-400 font-medium">gültiger Ausweis</span> vorgelegt werden.
+    </p>
+  </div>
+</div>
             <div className="container mx-auto px-4">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
                 <div className="space-y-4">
@@ -494,7 +529,7 @@ END:VCARD`
                   </ul>
                 </div>
               </div>
-
+ 
               <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
                 <p className="text-white/40 text-sm">
                   © {new Date().getFullYear()} Ushuaia Bar. Alle Rechte vorbehalten.
@@ -519,6 +554,7 @@ END:VCARD`
             </div>
           </footer>
           <CookieConsent /> {/* Render the CookieConsent component */}
+
         </>
       )}
     </div>
