@@ -431,12 +431,12 @@ END:VCARD`
 
    <div className="space-y-4 text-white/80 mb-20 text-center">
   <p className="text-lg">
-    Der Zutritt zum <span className="text-purple-400 font-semibold text-center">Shisha Bar</span> ist ab 18 Jahren gestattet.
+    Der Zutritt zum <span className="text-purple-400 font-semibold text-center">Raucher Bereich</span> ist ab 18 Jahren gestattet.
   </p>
 
   <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
     <p className="text-sm text-white/70 leading-relaxed">
-      Im <span className="text-purple-400 font-medium">Shisha Bar</span> werden <span className="text-red-400 font-medium">nur für Geburtstage</span> Reservierungen angenommen.
+      Im <span className="text-purple-400 font-medium">Raucher Bereich</span> werden <span className="text-red-400 font-medium">nur für Geburtstage</span> Reservierungen angenommen.
     </p>
 
     <p className="text-sm text-white/70 leading-relaxed mt-2">
