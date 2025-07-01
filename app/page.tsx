@@ -435,12 +435,28 @@ END:VCARD`
   </p>
 
   <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700/50">
+   <div className="flex items-center justify-center gap-2 ">
+                  <AlertTriangle className="h-5 w-5 text-amber-400" />
+                  <span className="text-amber-400 font-medium">Reservierungen</span>
+                  
+                </div>
     <p className="text-sm text-white/70 leading-relaxed">
       Im <span className="text-purple-400 font-medium">Raucher Bereich</span> werden <span className="text-red-400 font-medium">nur für Geburtstage</span> Reservierungen angenommen.
     </p>
 
     <p className="text-sm text-white/70 leading-relaxed mt-2">
       Bei der Ankunft muss ein <span className="text-amber-400 font-medium">gültiger Ausweis</span> vorgelegt werden.
+    </p>
+           <div className="flex items-center justify-center gap-2  mt-6">
+                  <AlertTriangle className="h-5 w-5 text-amber-400" />
+                  <span className="text-amber-400 font-medium">Kleiderordnung</span>
+                  
+                </div>
+                    <p className="text-sm text-white/70 leading-relaxed mt-">
+      Um unseren Gästen ein angenehmes Umfeld zu bieten, behalten wir uns vor, Personen mit unangemessener Kleidung - insbesondere Trainerhosen - den Zutritt zu verwehren. Wir danken für Ihr Verständnis.
+    </p>
+                        <p className="text-sm text-white/70 leading-relaxed mt-2">
+    
     </p>
   </div>
 </div>
