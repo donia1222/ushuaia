@@ -536,11 +536,11 @@ END:VCARD`
                     </li>
                     <li className="flex justify-between">
                       <span>Samstag</span>
-                      <span>17:30 - 01:00</span>
+                      <span>16:00 - 01:00</span>
                     </li>
                     <li className="flex justify-between">
                       <span>Sonntag</span>
-                      <span>17:00 - 23:00</span>
+                      <span>16:00 - 23:00</span>
                     </li>
                   </ul>
                 </div>
